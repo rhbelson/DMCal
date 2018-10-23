@@ -1,0 +1,7 @@
+{
+  "name": "dm_testapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
