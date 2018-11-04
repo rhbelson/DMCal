@@ -11,4 +11,9 @@ export class HomePage {
 
   }
 
+  viewSchedule() {
+        document.getElementById("fullCalendar").style.display="block";
+
+    }
+
 }

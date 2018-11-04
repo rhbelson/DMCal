@@ -22,10 +22,10 @@
   </ion-item>
 </ion-list>
 
-  <button ion-button royal> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
+  <button ion-button (click)="viewSchedule();"> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
   <button ion-button color="light">Learn More</button><br><br>
 
-
+<div id=fullCalendar style="display:none;"> 
 <ion-list>
   <ion-item>
     <ion-avatar item-start>
@@ -147,6 +147,7 @@
     <p>3pm-4pm</p>
   </ion-item>
 </ion-list>
+</div>
 
 
 </ion-content>
