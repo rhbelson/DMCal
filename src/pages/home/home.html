@@ -1,17 +1,44 @@
+
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+<ion-content style="text-align: center;background-image: url('images/dmheaderimage.jpg')" padding>
+<!--   <ion-img width="100%" height="100%" src="images/dmheaderimage.jpg"></ion-img> -->
+  <h2 style="margin-top: 15%">Welcome to NUDM Committee Member Application! </h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    This app will help you understand your daily schedule prior to entering the tent!
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    Please take a moment and enter your email address below to generate your personal schedule.
   </p>
+
+  <ion-list>
+  <ion-item>
+    <ion-label style="width:50%" stacked>Enter Email Address</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+</ion-list>
+
+  <button ion-button royal> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
+  <button ion-button color="light">Learn More</button>
+
+  <ul class="list">
+    <li class="item">
+      9:00am Do Something
+    </li>
+    <li class="item">
+      11:00am Do Something Else
+    </li>
+    <div class="item item-divider">
+    Lunch Break
+  </div>
+    <li class="item">
+      1:00pm Do Something Again
+    </li>
+</ul>
+
+
 </ion-content>
