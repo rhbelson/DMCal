@@ -18,12 +18,13 @@
   <ion-list>
   <ion-item>
     <ion-label style="width:50%" stacked>Enter Email Address</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input id="user_email" [(ngModel)]="inputValue" type="text"></ion-input>
   </ion-item>
 </ion-list>
 
   <button ion-button (click)="viewSchedule();"> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
   <button ion-button color="light">Learn More</button><br><br>
+
 
 <div id=fullCalendar style="display:none;"> 
 <ion-list>

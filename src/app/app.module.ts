@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -36,7 +37,6 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RemoteServiceProvider
   ]
 })
 export class AppModule {}
