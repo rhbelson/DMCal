@@ -22,15 +22,23 @@
   </ion-item>
 </ion-list>
 
-  <button ion-button (click)="viewSchedule();"> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
+  <button ion-button (click)="presentLoadingText()"> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
   <button ion-button color="light">Learn More</button><br><br>
 
+
+<div id="alert_card" style="display:none;">
+<ion-card>
+  <ion-card-header style="background-color: #B6465F; color:#ffffff;">
+    Sorry, that email does not appear in our directory! <br> Please try again.
+  </ion-card-header>
+</ion-card>
+</div>
 
 <div id=fullCalendar style="display:none;"> 
 <ion-list>
   <ion-item>
     <ion-avatar item-start>
-      <ion-icon name="medkit"></ion-icon>
+      <ion-icon id="icon1" name="medkit"></ion-icon>
     </ion-avatar>
     <h2 id="activity_1">Foot Massage</h2>
     <p>6pm-7pm</p>
