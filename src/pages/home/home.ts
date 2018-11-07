@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Http ,Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 
@@ -14,7 +13,7 @@ export class HomePage {
 
 	// posts: any;
   
-  constructor(public navCtrl: NavController, public http: Http, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
 //   	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_cal.csv').map(res => res.json()).subscribe(
 //     data => {
 //         this.posts = data.data.children;
