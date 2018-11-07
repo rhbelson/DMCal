@@ -9,3 +9,13 @@ To install RemoteService dependency:
 ionic g provider RemoteService
 ```
 
+Install push notification dependencies:
+
+```
+sudo npm i -g cordova
+ionic cordova plugin add phonegap-plugin-push
+npm install --save @ionic-native/push
+
+ionic cordova plugin add cordova-plugin-local-notification
+npm install --save @ionic-native/local-notifications
+```

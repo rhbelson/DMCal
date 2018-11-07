@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Http ,Response } from '@angular/http';
+// import {Http ,Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class HomePage {
 
 	// posts: any;
   
-  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications) {
+    // may need to add public http: Http,
 //   	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_cal.csv').map(res => res.json()).subscribe(
 //     data => {
 //         this.posts = data.data.children;
@@ -24,36 +26,18 @@ export class HomePage {
 // );
 }
 
-// presentLoadingDefault() {
-//   let loading = this.loadingCtrl.create({
-//     content: 'Please wait...'
-//   });
 
-//   loading.present();
-
-//   setTimeout(() => {
-//     loading.dismiss();
-//   }, 5000);
-// }
-
-// presentLoadingCustom() {
-//   let loading = this.loadingCtrl.create({
-//     spinner: 'hide',
-//     content: `
-//       <div class="custom-spinner-container">
-//         <div class="custom-spinner-box"></div>
-//       </div>`,
-//     duration: 5000
-//   });
-
-//   loading.onDidDismiss(() => {
-//     console.log('Dismissed loading');
-//   });
-
-//   loading.present();
-// }
-
-
+addNotification() {
+  console.log("Pinging you now!");
+  // Schedule a single notification
+  this.localNotifications.schedule({
+    id: 1,
+    text: 'Reminder! Do Your Job!',
+    sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+    trigger: {at: new Date(new Date().getTime() + 7000)},
+    data: { secret: key }
+  });
+}
 
 
 presentLoadingText() {
@@ -134,15 +118,15 @@ setTimeout(function(){
 
 	
 
-  fireAlert() {
-      let alert = this.alertController.create({
-          title: 'Error!',
-          subTitle: 'Sorry, that email does not appear in our directory',
-          buttons: ['OK']
-      });
+  // fireAlert() {
+  //     let alert = this.alertController.create({
+  //         title: 'Error!',
+  //         subTitle: 'Sorry, that email does not appear in our directory',
+  //         buttons: ['OK']
+  //     });
 
-      alert.present();
-  }
+  //     alert.present();
+  // }
  
 
   // adjustCalUI() {
@@ -213,7 +197,7 @@ setTimeout(function(){
 
         }, 3000);
 
-        
+    addNotification();
 
     }
 
