@@ -93,6 +93,8 @@ setTimeout(function(){
   var lines=txt.split('\n');
   console.log(lines[0]);
   console.log(lines.length);
+  var NUM_OF_ACTIVITIES = 8;
+
   ///Step 1: Find Correct User Email
   var i;
   var email_found=false;
@@ -103,14 +105,19 @@ setTimeout(function(){
       console.log("found email :"+ words[0])
       email_found=true;
       //Fill in calendar (for however many activities exist...)
-      document.getElementById("activity_1").innerHTML=words[1];
-      document.getElementById("activity_2").innerHTML=words[2];
-      document.getElementById("activity_3").innerHTML=words[3];
-      document.getElementById("activity_4").innerHTML=words[4];
-      document.getElementById("activity_5").innerHTML=words[5];
-      document.getElementById("activity_6").innerHTML=words[6];
-      document.getElementById("activity_7").innerHTML=words[7];
-      document.getElementById("activity_8").innerHTML=words[8];
+      var id = "activity_";
+      for (var k = 1; k < NUM_OF_ACTIVITIES + 1; k++) {
+        id = "activity_".concat(k.toString());
+        document.getElementById(id).innerHTML = words[k];
+      }
+      // document.getElementById("activity_1").innerHTML=words[1];
+      // document.getElementById("activity_2").innerHTML=words[2];
+      // document.getElementById("activity_3").innerHTML=words[3];
+      // document.getElementById("activity_4").innerHTML=words[4];
+      // document.getElementById("activity_5").innerHTML=words[5];
+      // document.getElementById("activity_6").innerHTML=words[6];
+      // document.getElementById("activity_7").innerHTML=words[7];
+      // document.getElementById("activity_8").innerHTML=words[8];
       // document.getElementById("activity_9").innerHTML=words[9];
       // document.getElementById("activity_10").innerHTML=words[10];
       // document.getElementById("activity_11").innerHTML=words[11];
@@ -121,29 +128,54 @@ setTimeout(function(){
       
     //Update Icons with for loop by activity name
     var j;
+    var act;
+    var activity_iter;
+    var icon_iter;
+    var icon_class
     for (j=1; j<9; j++) {
-      var activity_iter="activity_".concat(j.toString());
-      var icon_iter="icon".concat(j.toString());
+      activity_iter="activity_".concat(j.toString());
+      icon_iter="icon".concat(j.toString());
       console.log("Activity being changed: "+activity_iter);
-      if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="footrub") {
-        document.getElementById(icon_iter).className="icon icon-md ion-md-medkit";
-       }
+      
+      switch(document.getElementById(activity_iter).innerHTML.toLowerCase()) {
+        case "footrub":
+          icon_class = "icon icon-md ion-md-medkit";
+          break;
+        case "free":
+          icon_class = "icon icon-md ion-md-happy";
+          break;
+        case "food":
+          icon_class = "icon icon-md ion-md-pizza";
+          break;
+        case "security":
+          icon_class = "icon icon-md ion-md-eye";
+          break;
+        case "bathroom runner":
+          icon_class = "icon icon-md ion-md-water";
+          break;
+      }
+      document.getElementById(icon_iter).className = icon_class;
 
-      else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="free") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-happy";
-       }
 
-       else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="food") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-pizza";
-       }
+      // if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="footrub") {
+      //   document.getElementById(icon_iter).className="icon icon-md ion-md-medkit";
+      //  }
 
-       else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="security") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-eye";
-       }
+      // else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="free") {
+      //     document.getElementById(icon_iter).className="icon icon-md ion-md-happy";
+      //  }
 
-       else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="bathroom runner") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-water";
-       }
+      //  else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="food") {
+      //     document.getElementById(icon_iter).className="icon icon-md ion-md-pizza";
+      //  }
+
+      //  else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="security") {
+      //     document.getElementById(icon_iter).className="icon icon-md ion-md-eye";
+      //  }
+
+      //  else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="bathroom runner") {
+      //     document.getElementById(icon_iter).className="icon icon-md ion-md-water";
+      //  }
     }
 
     }
