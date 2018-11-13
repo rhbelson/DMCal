@@ -64,7 +64,9 @@ presentLoadingText() {
   document.getElementById('alert_card').style.display="none";
   var target_email;
   // target_email=this.inputValue;
-  target_email=document.querySelectorAll("#user_email>input")[0].value;
+  //target_email=document.querySelectorAll("#user_email>input")[0].value;
+  target_email = document.getElementById("user_email").getAttribute("ng-reflect-model");;
+  target_email = target_email.toLowerCase()
   console.log(target_email);
 
   //Edge Case
