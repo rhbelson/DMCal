@@ -1,0 +1,5 @@
+1552092900 - 6:55 cst
+1552093200 - 7 cst
+
+
+each 1.5 hr block is 5400 seconds
