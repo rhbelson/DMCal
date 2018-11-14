@@ -10,10 +10,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpModule } from '@angular/http';
 import { Push } from '@ionic-native/push'
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
+import { HTTP } from '@ionic-native/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import { Geolocation } from '@ionic-native/geolocation';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -42,6 +41,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     Push,
     LocalNotifications,
     Geolocation,
+    HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

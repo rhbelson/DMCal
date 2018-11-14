@@ -25,3 +25,9 @@ Install geolocation support:
 ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
 npm install --save @ionic-native/geolocation
 ```
+
+Install http requests:
+```
+ionic cordova plugin add cordova-plugin-advanced-http
+npm install --save @ionic-native/http
+``
