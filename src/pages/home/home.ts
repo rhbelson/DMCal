@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HomePage {
 
 	// posts: any;
   
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation) {
     // may need to add public http: Http,
 //   	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_cal.csv').map(res => res.json()).subscribe(
 //     data => {
@@ -29,8 +30,40 @@ export class HomePage {
 }
 
 
+getLocation() {
+  this.geolocation.getCurrentPosition().then((resp) => {
+ // resp.coords.latitude
+ // resp.coords.longitude
+}).catch((error) => {
+  console.log('Error getting location', error);
+});
+
+let watch = this.geolocation.watchPosition();
+watch.subscribe((data) => {
+  console.log(data.coords.latitude,data.coords.longitude);
+  return data.coords.latitude,data.coords.longitude;
+ // data can be a set of coordinates, or an error (if an error occurred).
+ // data.coords.latitude
+ // data.coords.longitude
+});
+}
+
+
+
+
 learnMore() {
-  this.addNotification();
+  // this.addNotification();
+  //Norris: 42.053689, -87.672595
+  var user_lat,user_long=this.getLocation();
+  if ((parseFloat(user_lat)>=42.053687 || parseFloat(user_lat)<=42.053690) && (parseFloat(user_long)<=-87.672593 || parseFloat(user_long)>=-87.672597)) {
+    console.log("User is in Norris");
+    // var user_location="Norris";
+  }
+  else {
+    console.log("User is in Norris");
+    // var user_location="Not in Tent";
+  }
+
 }
 
 

@@ -19,3 +19,9 @@ npm install --save @ionic-native/push
 ionic cordova plugin add cordova-plugin-local-notification
 npm install --save @ionic-native/local-notifications
 ```
+
+Install geolocation support:
+```
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
+npm install --save @ionic-native/geolocation
+```
