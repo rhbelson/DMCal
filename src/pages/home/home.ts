@@ -45,9 +45,10 @@ console.log(data.coords.latitude,data.coords.longitude);
     // var user_location="Not in Tent";
   }
 
-  var body=user_lat,user_long,user_time;
+  var body = '{ "lat": '+ user_lat.toString()+', "long": '+user_long.toString()+'}';
+  let header = {"Content-Type": "application/json", data: body};
 
-  this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', user_lat , {})
+  this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', header , {})
   .then(data => {
     console.log(data.status);
     console.log(data.data); // data received by server
