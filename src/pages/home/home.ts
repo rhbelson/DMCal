@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 // import {Http ,Response } from '@angular/http';
+import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
@@ -14,19 +15,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class HomePage {
 
-	// posts: any;
   
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation) {
-    // may need to add public http: Http,
-//   	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_cal.csv').map(res => res.json()).subscribe(
-//     data => {
-//         this.posts = data.data.children;
-//     },
-//     err => {
-//         console.log("Oops!");
-//     }
-// );
-  // this.inputValue="";
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP) {
+
 }
 
 
@@ -40,12 +31,42 @@ getLocation() {
 
 let watch = this.geolocation.watchPosition();
 watch.subscribe((data) => {
-  console.log(data.coords.latitude,data.coords.longitude);
-  return data.coords.latitude,data.coords.longitude;
- // data can be a set of coordinates, or an error (if an error occurred).
- // data.coords.latitude
- // data.coords.longitude
+console.log(data.coords.latitude,data.coords.longitude);
+ var user_lat=data.coords.latitude;
+ var user_long=data.coords.longitude;
+ var user_time=data.timestamp;
+ //Check if in Norris
+ if ((user_lat>=42.053687 || user_lat<=42.053690) && (user_long<=-87.672593 || user_long>=-87.672597)) {
+    console.log("User is in Norris");
+    // var user_location="Norris";
+  }
+ else {
+    console.log("User is in Norris");
+    // var user_location="Not in Tent";
+  }
+
+  var body = '{ "lat": '+ user_lat.toString()+', "long": '+user_long.toString()+'}';
+  let header = {"Content-Type": "application/json", data: body};
+
+  this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', header , {})
+  .then(data => {
+    console.log(data.status);
+    console.log(data.data); // data received by server
+    console.log(data.headers);
+
+  })
+  .catch(error => {
+
+    console.log(error.status);
+    console.log(error.error); // error message as string
+    console.log(error.headers);
+
+  });
+
 });
+  
+      
+
 }
 
 
@@ -54,16 +75,7 @@ watch.subscribe((data) => {
 learnMore() {
   // this.addNotification();
   //Norris: 42.053689, -87.672595
-  var user_lat,user_long=this.getLocation();
-  if ((parseFloat(user_lat)>=42.053687 || parseFloat(user_lat)<=42.053690) && (parseFloat(user_long)<=-87.672593 || parseFloat(user_long)>=-87.672597)) {
-    console.log("User is in Norris");
-    // var user_location="Norris";
-  }
-  else {
-    console.log("User is in Norris");
-    // var user_location="Not in Tent";
-  }
-
+  this.getLocation();
 }
 
 
