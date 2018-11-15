@@ -21,6 +21,7 @@ export class HomePage {
 }
 
 
+
 getLocation() {
   this.geolocation.getCurrentPosition().then((resp) => {
  // resp.coords.latitude
@@ -35,17 +36,26 @@ console.log(data.coords.latitude,data.coords.longitude);
  var user_lat=data.coords.latitude;
  var user_long=data.coords.longitude;
  var user_time=data.timestamp;
+ var inNorris=false;
  //Check if in Norris
  if ((user_lat>=42.053687 || user_lat<=42.053690) && (user_long<=-87.672593 || user_long>=-87.672597)) {
     console.log("User is in Norris");
+    inNorris=true;
     // var user_location="Norris";
   }
  else {
-    console.log("User is in Norris");
+    console.log("User is NOT in Norris");
     // var user_location="Not in Tent";
   }
 
-  var body = '{ "lat": '+ user_lat.toString()+', "long": '+user_long.toString()+'}';
+//Get user_id
+  var userId = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+    userId += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "userId": '+userId+', "inNorris": '+inNorris.toString()+'}';
   let header = {"Content-Type": "application/json", data: body};
 
   this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', header , {})
