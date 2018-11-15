@@ -110,18 +110,18 @@ presentLoadingText() {
   var target_email;
   // target_email=this.inputValue;
   target_email = document.getElementById("user_email").getAttribute("ng-reflect-model");
-  target_email = target_email.toLowerCase();
-  console.log(target_email);
+  
 
   //Edge Case
-  if (target_email=="") {
+  if (target_email=="" || target_email == null) {
     console.log("null string");
     document.getElementById('alert_card').style.display="block";
     document.getElementById("fullCalendar").style.display="none";
     loading.dismiss();
     return;
   }
-
+  target_email = target_email.toLowerCase();
+  console.log(target_email);
   var txt = '';
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
@@ -139,7 +139,7 @@ setTimeout(function(){
   var lines=txt.split('\n');
   console.log(lines[0]);
   console.log(lines.length);
-  var NUM_OF_ACTIVITIES = 8;
+  var NUM_OF_ACTIVITIES = 20;
 
   ///Step 1: Find Correct User Email
   var i;
@@ -152,9 +152,10 @@ setTimeout(function(){
       email_found=true;
       //Fill in calendar (for however many activities exist...)
       var id = "activity_";
-      for (var k = 1; k < NUM_OF_ACTIVITIES + 1; k++) {
+      for (var k = 1; k <= NUM_OF_ACTIVITIES; k++) {
         id = "activity_".concat(k.toString());
-        document.getElementById(id).innerHTML = words[k];
+        document.getElementById(id).innerHTML = words[k][0].toUpperCase().concat(words[k].substr(1));
+        console.log(id)
       }
       // document.getElementById("activity_1").innerHTML=words[1];
       // document.getElementById("activity_2").innerHTML=words[2];
@@ -178,7 +179,7 @@ setTimeout(function(){
     var activity_iter;
     var icon_iter;
     var icon_class
-    for (j=1; j<9; j++) {
+    for (j=1; j<= NUM_OF_ACTIVITIES; j++) {
       activity_iter="activity_".concat(j.toString());
       icon_iter="icon".concat(j.toString());
       console.log("Activity being changed: "+activity_iter);

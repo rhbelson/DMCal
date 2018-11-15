@@ -5,8 +5,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content style="text-align: center;background-image: url('images/dmheaderimage.jpg');" padding>
+<ion-content style="text-align: center;" padding>
 <!--   <ion-img width="100%" height="100%" src="images/dmheaderimage.jpg"></ion-img> -->
+<div style="background-image: url('/../../../assets/imgs/dmheaderimage.jpg'); background-size:cover; background-repeat:no-repeat; padding-top: 15%; padding-bottom: 10%">
   <h2 style="margin-top: 15%">Welcome to NUDM Committee Member Application! </h2>
   <p>
     This app will help you understand your daily schedule prior to entering the tent!
@@ -25,7 +26,7 @@
   <button ion-button (click)="presentLoadingText()"> <ion-icon name="calendar"></ion-icon>Generate My Calendar</button>
   <button ion-button color="light" (click)="learnMore()">Learn More</button><br><br>
 
-
+</div>
 <div id="alert_card" style="display:none;">
 <ion-card>
   <ion-card-header style="background-color: #B6465F; color:#ffffff;">
@@ -41,7 +42,7 @@
       <ion-icon id="icon1" name="medkit"></ion-icon>
     </ion-avatar>
     <h2 id="activity_1">Foot Massage</h2>
-    <p>6pm-7pm</p>
+    <p>6pm-7:30pm</p>
   </ion-item>
 
    <ion-item>
@@ -49,7 +50,7 @@
       <ion-icon id="icon2" name="happy"></ion-icon>
     </ion-avatar>
     <h2 id="activity_2">Free</h2>
-    <p>7pm-8pm</p>
+    <p>7:30pm-9pm</p>
   </ion-item>
 
    <ion-item>
@@ -57,7 +58,7 @@
       <ion-icon id="icon3" name="happy"></ion-icon>
     </ion-avatar>
     <h2 id="activity_3">Free</h2>
-    <p>8pm-9pm</p>
+    <p>9pm-10:30pm</p>
   </ion-item>
 
    <ion-item>
@@ -65,7 +66,7 @@
       <ion-icon id="icon4" name="eye"></ion-icon>
     </ion-avatar>
     <h2 id="activity_4">Security</h2>
-    <p>9pm-10pm</p>
+    <p>10:30pm-12am</p>
   </ion-item>
 
    <ion-item>
@@ -73,7 +74,7 @@
       <ion-icon id="icon5" name="eye"></ion-icon>
     </ion-avatar>
     <h2 id="activity_5">Security</h2>
-    <p>10pm-11pm</p>
+    <p>12am-1:30am</p>
   </ion-item>
 
    <ion-item>
@@ -81,7 +82,7 @@
       <ion-icon id="icon6" name="happy"></ion-icon>
     </ion-avatar>
     <h2 id="activity_6">Free</h2>
-    <p>11pm-12am</p>
+    <p>1:30pm-3am</p>
   </ion-item>
 
    <ion-item>
@@ -89,7 +90,7 @@
       <ion-icon id="icon7" name="medkit"></ion-icon>
     </ion-avatar>
     <h2 id="activity_7">Foot Massage</h2>
-    <p>12am-1am</p>
+    <p>3am-4:30am</p>
   </ion-item>
 
    <ion-item>
@@ -97,7 +98,7 @@
       <ion-icon id="icon8" name="water"></ion-icon>
     </ion-avatar>
     <h2 id="activity_8">Bathroom Runner</h2>
-    <p>1am-2am</p>
+    <p>4:30am-6am</p>
   </ion-item>
 
    <ion-item>
@@ -105,7 +106,7 @@
       <ion-icon id="icon9" name="happy"></ion-icon>
     </ion-avatar>
     <h2 id="activity_9">Free</h2>
-    <p>2am-3am</p>
+    <p>6am-7:30am</p>
   </ion-item>
 
    <ion-item>
@@ -113,7 +114,7 @@
       <ion-icon id="icon10" name="happy"></ion-icon>
     </ion-avatar>
     <h2 id="activity_10">Free</h2>
-    <p>3am-4am</p>
+    <p>7:30am-9am</p>
   </ion-item>
 
    <ion-item>
@@ -121,7 +122,7 @@
       <ion-icon id="icon11" name="medkit"></ion-icon>
     </ion-avatar>
     <h2 id="activity_11">Foot Massage</h2>
-    <p>4am-5am</p>
+    <p>9am-10:30am</p>
   </ion-item>
 
    <ion-item>
@@ -129,7 +130,7 @@
       <ion-icon id="icon12" name="happy"></ion-icon>
     </ion-avatar>
     <h2 id="activity_12">Free</h2>
-    <p>5am-6am</p>
+    <p>10:30am-12pm</p>
   </ion-item>
 
    <ion-item>
@@ -137,23 +138,63 @@
       <ion-icon id="icon13" name="pizza"></ion-icon>
     </ion-avatar>
     <h2 id="activity_13">Food serving</h2>
-    <p>6am-7am</p>
+    <p>12pm-1:30am</p>
   </ion-item>
 
    <ion-item>
     <ion-avatar item-start>
-      <ion-icon id="icon14" name="happy"></ion-icon>
+      <ion-icon id="icon14" name=""></ion-icon>
     </ion-avatar>
     <h2 id="activity_14">Free</h2>
-    <p>7am-8am</p>
+    <p>1:30pm-3pm</p>
   </ion-item>
 
    <ion-item>
     <ion-avatar item-start>
-      <ion-icon id="icon15" name="eye"></ion-icon>
+      <ion-icon id="icon15" name=""></ion-icon>
     </ion-avatar>
     <h2 id="activity_15">Security</h2>
-    <p>8am-9am</p>
+    <p>3pm-4:30pm</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <ion-icon id="icon16" name=""></ion-icon>
+    </ion-avatar>
+    <h2 id="activity_16">Security</h2>
+    <p>3pm-4:30pm</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <ion-icon id="icon17" name=""></ion-icon>
+    </ion-avatar>
+    <h2 id="activity_17">Security</h2>
+    <p>3pm-4:30pm</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <ion-icon id="icon18" name="eye"></ion-icon>
+    </ion-avatar>
+    <h2 id="activity_18">Security</h2>
+    <p>3pm-4:30pm</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <ion-icon id="icon19" name="eye"></ion-icon>
+    </ion-avatar>
+    <h2 id="activity_19">Security</h2>
+    <p>3pm-4:30pm</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <ion-icon id="icon20" name="eye"></ion-icon>
+    </ion-avatar>
+    <h2 id="activity_20">Security</h2>
+    <p>3pm-4:30pm</p>
   </ion-item>
 </ion-list>
 </div>

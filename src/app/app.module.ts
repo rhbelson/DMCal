@@ -14,6 +14,7 @@ import { Push } from '@ionic-native/push'
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HTTP } from '@ionic-native/http';
+import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HTTP } from '@ionic-native/http';
     Geolocation,
     HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RemoteServiceProvider,
   ]
 })
 export class AppModule {}
