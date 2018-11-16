@@ -8,6 +8,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,9 +18,18 @@ export class HomePage {
 
   
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP) {
-
+    //Get user_id
 }
 
+
+makeId() {
+  var uuid = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+      uuid += possible.charAt(Math.floor(Math.random() * possible.length));
+  return uuid;
+}
 
 
 getLocation() {
@@ -48,14 +58,9 @@ console.log(data.coords.latitude,data.coords.longitude);
     // var user_location="Not in Tent";
   }
 
-//Get user_id
-  var userId = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < 5; i++)
-    userId += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "userId": '+userId+', "inNorris": '+inNorris.toString()+'}';
+  var userActivity="footrub";
+  var userId=this.makeId();
+  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "userId": '+userId+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
   let header = {"Content-Type": "application/json", data: body};
 
   this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', header , {})
