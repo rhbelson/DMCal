@@ -140,9 +140,9 @@ presentLoadingText() {
   var txt = '';
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
-  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-  txt = xmlhttp.responseText;
-  console.log(txt);
+    if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+    txt = xmlhttp.responseText;
+    console.log(txt);
   }
   };
   xmlhttp.open("GET","./dm_cal.csv",true);
