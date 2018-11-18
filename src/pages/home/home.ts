@@ -90,6 +90,17 @@ console.log(data.coords.latitude,data.coords.longitude);
 learnMore() {
   // this.addNotification();
   //Norris: 42.053689, -87.672595
+   let loading = this.loadingCtrl.create({
+    spinner: 'hide',
+    content: 'Thank you!'
+  });
+
+  loading.present();
+
+  setTimeout(() => {
+  //Finish Loader
+    loading.dismiss();
+  }, 1000);
   this.getLocation();
 }
 
@@ -223,11 +234,5 @@ setTimeout(function(){
    }, 3000);
 
 }
-
-  // getPosts() {
-  //   return  this.http.get(this.getApiUrl)
-  //           .do((res : Response ) => console.log(res.json())
-  //           .map((res : Response ) => res.json())
-  //           .catch(error => console.log(error)));}
 
 }

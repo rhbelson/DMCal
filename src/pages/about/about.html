@@ -1,11 +1,97 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      DM Committee Stats
+      About NUDM 2019
     </ion-title>
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
 
+<div id="about">
+<ion-card>
+	<ion-card-title style="text-align: center;background-color: #176087;color:#ffffff"><b>
+      More about CIS of Chicago?</b>
+      </ion-card-title>
+  <ion-card-content style="background-color: #D0D0D0;color:#000000">
+    <ul>
+     <li>Communities In Schools of Chicago is a nonprofit dedicated to addressing the opportunity gap in education by ensuring that every Chicago public school student graduates high school prepared for success. CIS of Chicago implements programs that fall within four core areas: college and career readiness; the arts; health and wellness; and behavioral and mental health. </li>
+</ul>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+	<ion-card-title style="text-align: center;background-color: #176087;color:#ffffff"><b>
+      When do I get fed? </b>
+      </ion-card-title>
+  <ion-card-content style="background-color: #D0D0D0;color:#000000">
+    <ul>
+     <li>You get free food all 30 hours and we can ensure you will never be hungry! You will get a snack twice each 3-hour block, and breakfast, lunch, and dinner on Saturday.</li>
+</ul>
+  </ion-card-content>
+</ion-card>
+
+
+<ion-card>
+	<ion-card-title style="text-align: center;background-color: #176087;color:#ffffff"><b>
+      How many people in the tent? </b>
+      </ion-card-title>
+  <ion-card-content style="background-color: #D0D0D0;color:#000000">
+    <ul>
+     <li>Over 1000 students, so approximately 1 in 5 Northwestern students participate in this campus tradition</li>
+</ul>
+  </ion-card-content>
+</ion-card>
+
+
+  <label style="margin-top:20px;" class="item item-input">
+    <span class="input-label">Password:</span>
+    <input [(ngModel)]="pw" id="admin_password" type="password">
+  </label>
+  <button (click)="generateGraphs()" style="width:100%" class="button button-small button-assertive">
+  Submit
+</button>
+</div>
+
+
+
+<div id="dancer_data" style="display: none;">
+<ion-card>
+	<ion-card-title style="text-align: center;">
+      Activity Breakdown
+      </ion-card-title>
+    <p style="text-align: center;">
+      Compare attendance of activities for this block
+    </p>
+  <ion-card-content>
+    <canvas baseChart
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+	<ion-card-title style="text-align: center;">
+      Headcount Breakdown
+      </ion-card-title>
+    <p style="text-align: center;">
+      Compare expected attendance by block number
+    </p>
+  <ion-card-content>
+    <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+  </ion-card-content>
+</ion-card>
+</div>
+  
 </ion-content>

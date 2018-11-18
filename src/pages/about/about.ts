@@ -1,21 +1,65 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
+import { Chart } from 'chart.js';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 export class AboutPage {
+	public doughnutChartLabels:string[] = ['Bathroom Runner','Food','Footrub', 'Security', 'Free'];
+	public doughnutChartData:number[] = [30, 45, 50,15,20];
+	public doughnutChartType:string = 'doughnut';
+
+	// events
+	public chartClicked(e:any):void {
+	  console.log(e);
+	}
+
+	public chartHovered(e:any):void {
+	  console.log(e);
+	}
+
+
+	public barChartOptions:any = {
+	  scaleShowVerticalLines: false,
+	  responsive: true
+	};
+	public barChartLabels:string[] = ["1","2","3","4","5","6","7","8","9","10"];
+	public barChartType:string = 'bar';
+	public barChartLegend:boolean = true;
+
+	public barChartData:any[] = [
+	  {data: [65, 59, 80, 81, 56, 55, 40], label: 'Current Headcount'},
+	  {data: [28, 48, 40, 19, 86, 27, 90], label: 'Expected Headcount'}
+	];
+
+
+	public randomize():void {
+	  // Only Change 3 values
+	  let data = [
+	    Math.round(Math.random() * 100),
+	    59,
+	    80,
+	    (Math.random() * 100),
+	    56,
+	    (Math.random() * 100),
+	    40];
+	  let clone = JSON.parse(JSON.stringify(this.barChartData));
+	  clone[0].data = data;
+	  this.barChartData = clone;
+	  /**
+	   * (My guess), for Angular to recognize the change in the dataset
+	   * it has to change the dataset variable directly,
+	   * so one way around it, is to clone the data, change it and then
+	   * assign it;
+	   */
+	}
+
 
   constructor(public navCtrl: NavController, public http: HTTP) {
-	 // this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get.php', function(response) {
-	 // 		console.log("Good!");
-		//   console.log(response);
-		// }, function(response) {
-		//   console.log(response.error);
-		//   console.log("Not so good..");
-		// });
 	var response="";
 	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get.php', {}, {})
 	  .then(data => {
@@ -59,6 +103,20 @@ export class AboutPage {
 
 	 }, 4000);
 	
+  } //End of Constructor
+
+
+  generateGraphs() {
+  	try{
+	  	var pw = document.getElementById("admin_password").getAttribute("ng-reflect-model").toLowerCase();
+	  	if (pw=="nudm2019") {
+	  		document.getElementById('about').style.display="none";
+	  		document.getElementById('dancer_data').style.display="block";
+	  	}
+  	}
+  	catch(err) {
+  		//do nothing
+  	}
 
   }
 
