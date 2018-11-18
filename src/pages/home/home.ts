@@ -19,7 +19,53 @@ export class HomePage {
   
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP) {
     //Get user_id
+    setTimeout(() => {
+    this.checkNotifcations();
+      }, 10000);
 }
+
+
+//Checks for incoming notifications
+checkNotifcations() {
+  var recentNotification="";
+  var response="";
+  this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_notification_get.php', {}, {})
+    .then(data => {
+
+      console.log(data.status);
+      // console.log(data.data); // data received by server
+      response=data.data;
+      console.log("Checking notifications received: "+response.toString());
+      // console.log(data.headers);
+
+    })
+    .catch(error => {
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+    });
+
+    setTimeout(() => {
+    //Check if old notification
+    if (recentNotification==response.toString()) {
+      //do nothing
+      console.log("Old notification!");
+    }
+    else {
+      console.log("New notification!");
+      var notification_body=response.split('\n');
+      
+      this.localNotifications.schedule({
+          id: 1,
+          text: "NUDM 2019: "+notification_body[0].toString(),
+          trigger: {at: new Date(new Date().getTime() + 10)},
+      });
+      recentNotification=response.toString();
+    }
+  }, 3000);
+
+}
+
 
 
 makeId() {
@@ -88,7 +134,7 @@ console.log(data.coords.latitude,data.coords.longitude);
 
 
 learnMore() {
-  // this.addNotification();
+  this.addNotification();
   //Norris: 42.053689, -87.672595
    let loading = this.loadingCtrl.create({
     spinner: 'hide',

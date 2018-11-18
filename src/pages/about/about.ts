@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 import { Chart } from 'chart.js';
 import { LoadingController } from 'ionic-angular';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @Component({
   selector: 'page-about',
@@ -59,7 +60,7 @@ export class AboutPage {
 	}
 
 
-  constructor(public navCtrl: NavController, public http: HTTP) {
+  constructor(public navCtrl: NavController, public http: HTTP, private localNotifications: LocalNotifications) {
 	var response="";
 	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get.php', {}, {})
 	  .then(data => {
@@ -81,6 +82,7 @@ export class AboutPage {
 		var text=response.split('\n');
 		var activities=[];
 		var norris_count=[];
+		var timestamps=[];
 		console.log("Parsing dm_info.txt dataset..");
 
 		//Get Activities
@@ -94,9 +96,15 @@ export class AboutPage {
 			var norris_beg=text[i].indexOf("inNorris");
 			var norris_end=text[i].indexOf("timestamp");
 			norris_count.push(text[i].substring(norris_beg+10,norris_end-3));
+
+			//Get timestamp
+			var timestamp_end=text[i].indexOf("timestamp");
+			timestamps.push(text[i].substring(norris_beg+11,timestamp_end-3));
 		}
-		console.log(activities);
-		console.log(norris_count);
+		console.log("There are "+activities.length.toString()+"dancers right now");
+		// console.log(activities);
+		// console.log(norris_count);
+		// console.log(timestamps)
 
 
 
@@ -113,6 +121,40 @@ export class AboutPage {
 	  		document.getElementById('about').style.display="none";
 	  		document.getElementById('dancer_data').style.display="block";
 	  	}
+  	}
+  	catch(err) {
+  		//do nothing
+  	}
+
+  }
+
+  generateNotifications() {
+  	try {
+  		var notify_text = document.getElementById("notification_text").getAttribute("ng-reflect-model").toLowerCase();
+  		var audience = document.getElementById("audience").getAttribute("ng-reflect-model").toLowerCase();
+  		console.log(notify_text,audience);
+
+  		//Post notification text
+  		var body =notify_text.toString()+"\n"+audience.toString();
+		let header = {"Content-Type": "application/json", data: body};
+
+		  this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_notification.php', header , {})
+		  .then(data => {
+		    console.log(data.status);
+		    console.log(data.data); // data received by server
+		    console.log(data.headers);
+
+		  })
+		  .catch(error => {
+
+		    console.log(error.status);
+		    console.log(error.error); // error message as string
+		    console.log(error.headers);
+
+		  });
+
+
+
   	}
   	catch(err) {
   		//do nothing
