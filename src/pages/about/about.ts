@@ -4,6 +4,7 @@ import { HTTP } from '@ionic-native/http';
 import { Chart } from 'chart.js';
 import { LoadingController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -60,7 +61,7 @@ export class AboutPage {
 	}
 
 
-  constructor(public navCtrl: NavController, public http: HTTP, private localNotifications: LocalNotifications) {
+  constructor(public navCtrl: NavController, public http: HTTP, private localNotifications: LocalNotifications, private alertCtrl: AlertController) {
 	var response="";
 	this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get.php', {}, {})
 	  .then(data => {
@@ -101,7 +102,7 @@ export class AboutPage {
 			var timestamp_end=text[i].indexOf("timestamp");
 			timestamps.push(text[i].substring(norris_beg+11,timestamp_end-3));
 		}
-		console.log("There are "+activities.length.toString()+"dancers right now");
+		console.log("There are "+activities.length.toString()+" dancers right now");
 		// console.log(activities);
 		// console.log(norris_count);
 		// console.log(timestamps)
@@ -130,8 +131,8 @@ export class AboutPage {
 
   generateNotifications() {
   	try {
-  		var notify_text = document.getElementById("notification_text").getAttribute("ng-reflect-model").toLowerCase();
-  		var audience = document.getElementById("audience").getAttribute("ng-reflect-model").toLowerCase();
+  		var notify_text = document.getElementById("notification_text").getAttribute("ng-reflect-model");
+  		var audience = document.getElementById("audience").getAttribute("ng-reflect-model");
   		console.log(notify_text,audience);
 
   		//Post notification text
@@ -153,7 +154,12 @@ export class AboutPage {
 
 		  });
 
-
+	 let alert = this.alertCtrl.create({
+	    title: 'Notification Deployed',
+	    subTitle: audience.toString()+" will receive message shortly",
+	    buttons: ['Ok']
+	  });
+	  alert.present();
 
   	}
   	catch(err) {

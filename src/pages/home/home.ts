@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -17,18 +18,28 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class HomePage {
 
   
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP) {
-    //Get user_id
-    setTimeout(() => {
-    this.checkNotifcations();
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage) {
+    //1) Get user_id somehow
+
+    //2) Check for Notifications every 10 seconds
+    this.storage.set('recentNotif', '');
+    setInterval(() => {
+    this.checkNotifications();
       }, 10000);
+
 }
 
 
 //Checks for incoming notifications
-checkNotifcations() {
-  var recentNotification="";
-  var response="";
+checkNotifications() {
+  var response='';
+  var recentNotif;
+  //Get recent notification from storage
+   this.storage.get('recentNotif').then((val) => {
+    recentNotif=val;
+  });
+
+  
   this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_notification_get.php', {}, {})
     .then(data => {
 
@@ -45,13 +56,15 @@ checkNotifcations() {
       console.log(error.headers);
     });
 
+
+    //Wait Until Notification Comes in
     setTimeout(() => {
     //Check if old notification
-    if (recentNotification==response.toString()) {
+    if (recentNotif==response.toString()) {
       //do nothing
       console.log("Old notification!");
     }
-    else {
+    if (recentNotif!=response.toString()) {
       console.log("New notification!");
       var notification_body=response.split('\n');
       
@@ -60,7 +73,7 @@ checkNotifcations() {
           text: "NUDM 2019: "+notification_body[0].toString(),
           trigger: {at: new Date(new Date().getTime() + 10)},
       });
-      recentNotification=response.toString();
+      this.storage.set('recentNotif', response.toString());
     }
   }, 3000);
 

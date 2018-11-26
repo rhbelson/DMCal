@@ -15,6 +15,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HTTP } from '@ionic-native/http';
 import { ChartsModule } from 'ng2-charts';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ChartsModule } from 'ng2-charts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     ChartsModule
   ],
   bootstrap: [IonicApp],

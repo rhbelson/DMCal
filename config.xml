@@ -91,4 +91,5 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
+    <plugin name="cordova-sqlite-storage" spec="2.5.2" />
 </widget>

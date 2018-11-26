@@ -30,10 +30,16 @@ Install http requests:
 ```
 ionic cordova plugin add cordova-plugin-advanced-http
 npm install --save @ionic-native/http
-``
+```
 
 Install charts.js:
 ```
 npm install chart.js --save
 npm install ng2-charts --save
+```
+
+Install storage:
+```
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic/storage
 ```
