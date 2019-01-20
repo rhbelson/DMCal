@@ -43,3 +43,15 @@ Install storage:
 ionic cordova plugin add cordova-sqlite-storage
 npm install --save @ionic/storage
 ```
+
+Install background mode:
+```
+ionic cordova plugin add cordova-plugin-background-mode
+npm install --save @ionic-native/background-mode
+```
+
+Install uuid:
+```
+ionic cordova plugin add cordova-plugin-uniquedeviceid
+npm install --save @ionic-native/unique-device-id
+```

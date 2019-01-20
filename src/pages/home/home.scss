@@ -1,3 +1,18 @@
 page-home {
+@keyframes swinging{
+    0%{transform: rotate(10deg);}
+    50%{transform: rotate(-5deg)}
+    100%{transform: rotate(10deg);}
+}
+ 
+.image{
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-animation: swinging 5.5s ease-in-out forwards infinite;
+    animation: swinging 5.5s ease-in-out forwards infinite;
+}
 
+.ion-col {
+	
+}
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 // import {Http ,Response } from '@angular/http';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/map';
@@ -7,6 +7,9 @@ import { LoadingController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Storage } from '@ionic/storage';
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+import { IBeacon } from '@ionic-native/ibeacon';
 
 
 
@@ -18,17 +21,103 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage) {
-    //1) Get user_id somehow
+  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private backgroundMode: BackgroundMode, private uniqueDeviceID: UniqueDeviceID, private ibeacon: IBeacon) {
+    //0) Set background mode on
+    // this.backgroundMode.enable();
+
+    //1) Get user_id 
+    // this.getUUID();
+    
 
     //2) Check for Notifications every 10 seconds
     this.storage.set('recentNotif', '');
+
+    //3) Check Notifications
     setInterval(() => {
     this.checkNotifications();
-      }, 10000);
+      }, 30000);
 
+    //4) Get Users Location every 15 minutes
+    // setInterval(() => {
+    // this.getLocation();
+    //   }, 900000);
+
+    setTimeout(() => {
+    this.trackBeacons();
+    }, 3000);
 }
 
+
+  getUUID() {
+    console.log("getUUID called");
+    this.uniqueDeviceID.get()
+    .then((uuid: any) => console.log(uuid))
+    .catch((error: any) => console.log(error));
+  }
+
+
+
+//**************************BEGINNING OF BEACON CODE************************************************//
+
+
+  trackBeacons() {
+   if (this.platform.is('cordova')) {
+    // Request permission to use location on iOS
+    this.ibeacon.requestAlwaysAuthorization();
+    // create a new delegate and register it with the native layer
+  
+      // create a new delegate and register it with the native layer
+      let delegate = this.ibeacon.Delegate();
+
+      delegate.didStartMonitoringForRegion()
+        .subscribe(
+          data => console.log('didStartMonitoringForRegion: ', data),
+          error => console.error()
+        );
+      
+      delegate.didEnterRegion()
+        .subscribe(
+          data => {
+            console.log("Entered Region", data);
+  
+          }
+        );
+
+      delegate.didExitRegion()
+        .subscribe(
+          data => {
+            console.log("Exited Region",data);
+            
+          }
+        );
+      
+      let beaconRegion = this.ibeacon.BeaconRegion('norrisEntrance','2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6');
+      this.ibeacon.startMonitoringForRegion(beaconRegion)
+        .then(
+          () => console.log('Started Monitoring', beaconRegion),
+          error => console.error('Failed to begin monitoring: ', error)
+        );
+
+      this.ibeacon.enableDebugNotifications();
+    }
+    else {
+      console.log("not cordova")
+    }
+  }
+
+
+
+
+
+
+
+// this.ibeacon.startMonitoringForRegion(beaconRegion)
+//   .then(
+//     () => console.log('Native layer received the request to monitoring'),
+//     error => console.error('Native layer failed to begin monitoring: ', error)
+//   );
+
+//**************************END OF BEACON CODE************************************************//
 
 //Checks for incoming notifications
 checkNotifications() {

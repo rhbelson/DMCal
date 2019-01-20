@@ -16,6 +16,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { HTTP } from '@ionic-native/http';
 import { ChartsModule } from 'ng2-charts';
 import { IonicStorageModule } from '@ionic/storage';
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+import { IBeacon } from '@ionic-native/ibeacon';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { IonicStorageModule } from '@ionic/storage';
     LocalNotifications,
     Geolocation,
     HTTP,
+    BackgroundMode,
+    UniqueDeviceID,
+    IBeacon,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
