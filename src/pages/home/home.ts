@@ -285,7 +285,11 @@ presentLoadingText() {
   // target_email=this.inputValue;
   target_email = document.getElementById("user_email").getAttribute("ng-reflect-model");
   target_email = target_email.toLowerCase();
-  console.log(target_email);
+  console.log("Target Email: "+target_email);
+
+  //Fix ".edu" not showing up bug
+  target_email+=".edu";
+
 
   //Edge Case
   if (target_email=="") {
@@ -304,7 +308,7 @@ presentLoadingText() {
   console.log(txt);
   }
   };
-  xmlhttp.open("GET","./dm_cal.csv",true);
+  xmlhttp.open("GET","./dm_schedule.csv",true);
   xmlhttp.send();
 
 
@@ -318,54 +322,66 @@ setTimeout(function(){
   var email_found=false;
   for (i=0;i<lines.length;i++) {
     var words=lines[i].split(',');
-    console.log("Checking string: "+words[0]);
-    if (words[0]==target_email) {
-      console.log("found email :"+ words[0])
+    console.log("Checking string: "+words[1]);
+    if (words[1]==target_email) {
+      console.log("found email :"+ words[1])
       email_found=true;
       //Fill in calendar (for however many activities exist...)
-      document.getElementById("activity_1").innerHTML=words[1];
-      document.getElementById("activity_2").innerHTML=words[2];
-      document.getElementById("activity_3").innerHTML=words[3];
-      document.getElementById("activity_4").innerHTML=words[4];
-      document.getElementById("activity_5").innerHTML=words[5];
-      document.getElementById("activity_6").innerHTML=words[6];
-      document.getElementById("activity_7").innerHTML=words[7];
-      document.getElementById("activity_8").innerHTML=words[8];
-      // document.getElementById("activity_9").innerHTML=words[9];
-      // document.getElementById("activity_10").innerHTML=words[10];
-      // document.getElementById("activity_11").innerHTML=words[11];
-      // document.getElementById("activity_12").innerHTML=words[12];
-      // document.getElementById("activity_13").innerHTML=words[13];
-      // document.getElementById("activity_14").innerHTML=words[14];
-      // document.getElementById("activity_15").innerHTML=words[15];
+      //STEP 1: 4th Column is first activity, User Has words.length-3 activities
+      console.log("This user has "+words.length+"activities");
       
-    //Update Icons with for loop by activity name
-    var j;
-    for (j=1; j<9; j++) {
-      var activity_iter="activity_".concat(j.toString());
-      var icon_iter="icon".concat(j.toString());
-      console.log("Activity being changed: "+activity_iter);
-      if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="footrub") {
-        document.getElementById(icon_iter).className="icon icon-md ion-md-medkit";
-       }
+      
+      var a;
+      for (a=0;a<words.length-3;a++) {
+         //Render Specific List Item
+        var item_iter="item"+(a+1).toString();
+        console.log(item_iter);
+        document.getElementById(item_iter).style.display="block";
 
-      else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="free") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-happy";
-       }
 
-       else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="food") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-pizza";
-       }
+        //Update Text
+        var activity_info=words[3+a].split(";");
+        console.log("Start Time: "+activity_info[0]);
+        console.log("End Time: "+activity_info[1]);
+        console.log("Activity: "+activity_info[2]);
+        console.log("Location: "+activity_info[3]);
 
-       else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="security") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-eye";
-       }
 
-       else if (document.getElementById(activity_iter).innerHTML.toLowerCase()=="bathroom runner") {
-          document.getElementById(icon_iter).className="icon icon-md ion-md-water";
-       }
-    }
+        var act_iter="activity_"+(a+1).toString();
+        var time_iter="time_"+(a+1).toString();
+        var loc_iter="loc_"+(a+1).toString();
 
+        console.log(act_iter);
+        document.getElementById(act_iter).innerHTML=activity_info[2];
+        document.getElementById(time_iter).innerHTML=activity_info[0]+" to "+activity_info[1];
+        document.getElementById(loc_iter).innerHTML=activity_info[3];
+
+
+        //Update Icons with for loop by activity name
+        var icon_iter="icon".concat((a+1).toString());
+        if (document.getElementById(act_iter).innerHTML.toLowerCase()=="footrub") {
+          document.getElementById(icon_iter).className="icon icon-md ion-md-medkit";
+         }
+
+        else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="free") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-happy";
+         }
+
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="food") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-pizza";
+         }
+
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="security") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-eye";
+         }
+
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="bathroom runner") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-water";
+         }
+
+
+
+      }
     }
   }
 
