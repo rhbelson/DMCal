@@ -7,9 +7,9 @@ import { LoadingController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Storage } from '@ionic/storage';
-import { BackgroundMode } from '@ionic-native/background-mode';
+// import { BackgroundMode } from '@ionic-native/background-mode';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
-import { IBeacon } from '@ionic-native/ibeacon';
+// import { IBeacon } from '@ionic-native/ibeacon';
 
 
 
@@ -21,7 +21,7 @@ import { IBeacon } from '@ionic-native/ibeacon';
 export class HomePage {
 
   
-  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private backgroundMode: BackgroundMode, private uniqueDeviceID: UniqueDeviceID, private ibeacon: IBeacon) {
+  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
     //0) Set background mode on
     // this.backgroundMode.enable();
 
@@ -42,9 +42,9 @@ export class HomePage {
     // this.getLocation();
     //   }, 900000);
 
-    setTimeout(() => {
-    this.trackBeacons();
-    }, 3000);
+    // setTimeout(() => {
+    // this.trackBeacons();
+    // }, 3000);
 }
 
 
@@ -60,55 +60,50 @@ export class HomePage {
 //**************************BEGINNING OF BEACON CODE************************************************//
 
 
-  trackBeacons() {
-   if (this.platform.is('cordova')) {
-    // Request permission to use location on iOS
-    this.ibeacon.requestAlwaysAuthorization();
-    // create a new delegate and register it with the native layer
+  // trackBeacons() {
+  //  if (this.platform.is('cordova')) {
+  //   // Request permission to use location on iOS
+  //   this.ibeacon.requestAlwaysAuthorization();
+  //   // create a new delegate and register it with the native layer
   
-      // create a new delegate and register it with the native layer
-      let delegate = this.ibeacon.Delegate();
+  //     // create a new delegate and register it with the native layer
+  //     let delegate = this.ibeacon.Delegate();
 
-      delegate.didStartMonitoringForRegion()
-        .subscribe(
-          data => console.log('didStartMonitoringForRegion: ', data),
-          error => console.error()
-        );
+  //     delegate.didStartMonitoringForRegion()
+  //       .subscribe(
+  //         data => console.log('didStartMonitoringForRegion: ', data),
+  //         error => console.error()
+  //       );
       
-      delegate.didEnterRegion()
-        .subscribe(
-          data => {
-            console.log("Entered Region", data);
+  //     delegate.didEnterRegion()
+  //       .subscribe(
+  //         data => {
+  //           console.log("Entered Region", data);
   
-          }
-        );
+  //         }
+  //       );
 
-      delegate.didExitRegion()
-        .subscribe(
-          data => {
-            console.log("Exited Region",data);
+  //     delegate.didExitRegion()
+  //       .subscribe(
+  //         data => {
+  //           console.log("Exited Region",data);
             
-          }
-        );
+  //         }
+  //       );
       
-      let beaconRegion = this.ibeacon.BeaconRegion('norrisEntrance','2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6');
-      this.ibeacon.startMonitoringForRegion(beaconRegion)
-        .then(
-          () => console.log('Started Monitoring', beaconRegion),
-          error => console.error('Failed to begin monitoring: ', error)
-        );
+  //     let beaconRegion = this.ibeacon.BeaconRegion('norrisEntrance','2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6');
+  //     this.ibeacon.startMonitoringForRegion(beaconRegion)
+  //       .then(
+  //         () => console.log('Started Monitoring', beaconRegion),
+  //         error => console.error('Failed to begin monitoring: ', error)
+  //       );
 
-      this.ibeacon.enableDebugNotifications();
-    }
-    else {
-      console.log("not cordova")
-    }
-  }
-
-
-
-
-
+  //     this.ibeacon.enableDebugNotifications();
+  //   }
+  //   else {
+  //     console.log("not cordova")
+  //   }
+  // }
 
 
 // this.ibeacon.startMonitoringForRegion(beaconRegion)
@@ -254,13 +249,19 @@ learnMore() {
 
 
 addNotification() {
-  console.log("Pinging you now!");
+  let timenow=new Date();
+  let time=new Date(2019, 0, 20, 15, 52);
+  console.log("Triggering Notification at "+time);
+  console.log("Current Time: "+timenow);
   // Schedule a single notification
+  this.localNotifications.clearAll();
   this.localNotifications.schedule({
-    id: 1,
+    id: 3,
+    title: 'DMCal',
     text: 'Reminder! Do Your Job!',
-    trigger: {at: new Date(new Date().getTime() + 10)},
+    trigger: { at: new Date(2020, 0, 20, 15, 52) },
   });
+
 }
 
 
@@ -308,10 +309,12 @@ presentLoadingText() {
   console.log(txt);
   }
   };
-  xmlhttp.open("GET","./dm_schedule.csv",true);
+  xmlhttp.open("GET","./dm_schedule2.csv",true);
   xmlhttp.send();
 
 
+
+///////BEGINNING OF CODE THAT DYNAMICALLY RENDERS DM MEMBER SCHEDULE////////////////////
 setTimeout(function(){ 
   console.log("parsing input.."); 
   var lines=txt.split('\n');
@@ -353,7 +356,24 @@ setTimeout(function(){
 
         console.log(act_iter);
         document.getElementById(act_iter).innerHTML=activity_info[2];
-        document.getElementById(time_iter).innerHTML=activity_info[0]+" to "+activity_info[1];
+
+        //Parse Date
+        if (activity_info[0].includes("2019-03-08T")) {
+          activity_info[0]=activity_info[0].replace("2019-03-08T","Friday ");
+        }
+        if (activity_info[0].includes("2019-03-09T")) {
+          activity_info[0]=activity_info[0].replace("2019-03-09T","Saturday ");
+        }
+        if (activity_info[1].includes("2019-03-08T")) {
+          activity_info[1]=activity_info[1].replace("2019-03-08T","Friday ");
+        }
+        if (activity_info[1].includes("2019-03-09T")) {
+          activity_info[1]=activity_info[1].replace("2019-03-09T","Saturday ");
+        }
+
+
+
+        document.getElementById(time_iter).innerHTML=activity_info[0]+" – "+activity_info[1];
         document.getElementById(loc_iter).innerHTML=activity_info[3];
 
 
@@ -378,9 +398,6 @@ setTimeout(function(){
          else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="bathroom runner") {
             document.getElementById(icon_iter).className="icon icon-md ion-md-water";
          }
-
-
-
       }
     }
   }
@@ -396,6 +413,7 @@ setTimeout(function(){
     email_found=false;
   }
    }, 3000);
+///////BEGINNING OF CODE THAT DYNAMICALLY RENDERS DM MEMBER SCHEDULE////////////////////
 
 }
 
