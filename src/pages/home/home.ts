@@ -163,7 +163,9 @@ checkNotifications() {
 
 }
 
-
+updateUser(name) {
+  this.storage.set("user",name);
+}
 
 makeId() {
   var uuid = "";
@@ -231,7 +233,7 @@ console.log(data.coords.latitude,data.coords.longitude);
 
 
 learnMore() {
-  this.addNotification();
+  // this.addNotification();
   //Norris: 42.053689, -87.672595
    let loading = this.loadingCtrl.create({
     spinner: 'hide',
@@ -246,6 +248,7 @@ learnMore() {
   }, 1000);
   this.getLocation();
 }
+
 
 
 addNotification() {
@@ -329,6 +332,7 @@ setTimeout(function(){
     if (words[1]==target_email) {
       console.log("found email :"+ words[1])
       email_found=true;
+      // this.updateUser(words[1].toString());
       //Fill in calendar (for however many activities exist...)
       //STEP 1: 4th Column is first activity, User Has words.length-3 activities
       console.log("This user has "+words.length+"activities");
@@ -353,8 +357,6 @@ setTimeout(function(){
         var act_iter="activity_"+(a+1).toString();
         var time_iter="time_"+(a+1).toString();
         var loc_iter="loc_"+(a+1).toString();
-
-        console.log(act_iter);
         document.getElementById(act_iter).innerHTML=activity_info[2];
 
         //Parse Date
@@ -375,6 +377,17 @@ setTimeout(function(){
 
         document.getElementById(time_iter).innerHTML=activity_info[0]+" – "+activity_info[1];
         document.getElementById(loc_iter).innerHTML=activity_info[3];
+
+
+        //Populate Storage
+        // console.log("Begin Populating Storage");
+        // console.log(act_iter.toString());
+        // console.log(activity_info[2].toString());
+        // this.storage.set(act_iter.toString(), activity_info[2].toString());
+        // console.log("STORAGE 1 WORKED");
+        // this.storage.set(time_iter,activity_info[0]+" – "+activity_info[1]);
+
+        // this.storage.set(loc_iter,activity_info[3]);
 
 
         //Update Icons with for loop by activity name

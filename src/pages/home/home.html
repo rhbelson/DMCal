@@ -17,7 +17,7 @@
   <ion-list>
   <ion-item>
     <ion-label style="width:50%" stacked>Enter Email Address</ion-label>
-    <ion-input id="user_email" name="inputValue" [(ngModel)]="inputValue" type="text"></ion-input>
+    <ion-input autocomplete="on" id="user_email" name="inputValue" [(ngModel)]="inputValue" type="text"></ion-input>
   </ion-item>
 </ion-list>
 
@@ -35,260 +35,366 @@
 
 <div id=fullCalendar style="display:none;font-family: Lato"> 
 <ion-list>
+  
   <ion-item style="display:none;" id="item1">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon1" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_1">
+    <ion-col col-6 id="activity_1">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_1">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_1">
+    <ion-col col-4 id="loc_1" style="text-align: right">
       Norris 
     </ion-col>
+    <ion-col col-12 id="time_1" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
+    </ion-col>
+    
   </ion-row>
   </ion-item>
 
    <ion-item style="display:none;" id="item2">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon2" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_2">
+    <ion-col col-6 id="activity_2">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_2">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_2">
+    <ion-col col-4 id="loc_2" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_2" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
    <ion-item style="display:none;" id="item3">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon3" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_3">
+    <ion-col col-6 id="activity_3">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_3">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_3">
+    <ion-col col-4 id="loc_3" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_3" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
    <ion-item style="display:none;" id="item4">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon4" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_4">
+    <ion-col col-6 id="activity_4">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_4">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_4">
+    <ion-col col-4 id="loc_4" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_4" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;" id="item5">
+
+  <ion-item style="display:none;" id="item5">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon5" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_5">
+    <ion-col col-6 id="activity_5">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_5">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_5">
+    <ion-col col-4 id="loc_5" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_5" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;" id="item6">
+  <ion-item style="display:none;" id="item6">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon6" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_6">
+    <ion-col col-6 id="activity_6">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_6">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_6">
+    <ion-col col-4 id="loc_6" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_6" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
+   
 
-   <ion-item style="display:none;" id="item7">
+
+  <ion-item style="display:none;" id="item7">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon7" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_7">
+    <ion-col col-6 id="activity_7">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_7">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_7">
+    <ion-col col-4 id="loc_7" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_7" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;" id="item8">
+
+  <ion-item style="display:none;" id="item8">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon8" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_8">
+    <ion-col col-6 id="activity_8">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_8">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_8">
+    <ion-col col-4 id="loc_8" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_8" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-  <ion-item style="display:none;" id="item9">
+
+ <ion-item style="display:none;" id="item9">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon9" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_9">
+    <ion-col col-6 id="activity_9">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_9">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_9">
+    <ion-col col-4 id="loc_9" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_9" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;" id="item10">
+
+  <ion-item style="display:none;" id="item10">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon10" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_10">
+    <ion-col col-6 id="activity_10">
       Footrub
     </ion-col>
-    <ion-col col-4 id="time_10">
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2 id="loc_10">
+    <ion-col col-4 id="loc_10" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_10" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;">
+
+  <ion-item style="display:none;" id="item11">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon11" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_11">
+    <ion-col col-6 id="activity_11">
       Footrub
     </ion-col>
-    <ion-col col-4>
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2>
+    <ion-col col-4 id="loc_11" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_11" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-  <ion-item style="display:none;">
+
+<ion-item style="display:none;" id="item12">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon12" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_12">
+    <ion-col col-6 id="activity_12">
       Footrub
     </ion-col>
-    <ion-col col-4>
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2>
+    <ion-col col-4 id="loc_12" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_12" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-  <ion-item style="display:none;">
+
+  <ion-item style="display:none;" id="item13">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon13" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_13">
+    <ion-col col-6 id="activity_13">
       Footrub
     </ion-col>
-    <ion-col col-4>
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2>
+    <ion-col col-4 id="loc_13" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_13" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;">
+
+  <ion-item style="display:none;" id="item14">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon14" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_14">
+    <ion-col col-6 id="activity_14">
       Footrub
     </ion-col>
-    <ion-col col-4>
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2>
+    <ion-col col-4 id="loc_14" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_14" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
 
-   <ion-item style="display:none;">
+
+  <ion-item style="display:none;" id="item15">
     <ion-row>
-    <ion-col col-2>
+    <ion-col col-2 style="text-align: left">
       <ion-icon id="icon15" name="medkit"></ion-icon>
     </ion-col>
-    <ion-col col-4 id="activity_15">
+    <ion-col col-6 id="activity_15">
       Footrub
     </ion-col>
-    <ion-col col-4>
-      6pm-7pm
-    </ion-col>
-    <ion-col col-2>
+    <ion-col col-4 id="loc_15" style="text-align: right">
       Norris 
+    </ion-col>
+    <ion-col col-12 id="time_15" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
     </ion-col>
   </ion-row>
   </ion-item>
+
+  <ion-item style="display:none;" id="item16">
+    <ion-row>
+    <ion-col col-2 style="text-align: left">
+      <ion-icon id="icon16" name="medkit"></ion-icon>
+    </ion-col>
+    <ion-col col-6 id="activity_16">
+      Footrub
+    </ion-col>
+    <ion-col col-4 id="loc_16" style="text-align: right">
+      Norris 
+    </ion-col>
+    <ion-col col-12 id="time_16" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
+    </ion-col>
+  </ion-row>
+  </ion-item>
+
+  <ion-item style="display:none;" id="item17">
+    <ion-row>
+    <ion-col col-2 style="text-align: left">
+      <ion-icon id="icon17" name="medkit"></ion-icon>
+    </ion-col>
+    <ion-col col-6 id="activity_17">
+      Footrub
+    </ion-col>
+    <ion-col col-4 id="loc_17" style="text-align: right">
+      Norris 
+    </ion-col>
+    <ion-col col-12 id="time_17" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
+    </ion-col>
+  </ion-row>
+  </ion-item>
+
+  <ion-item style="display:none;" id="item18">
+    <ion-row>
+    <ion-col col-2 style="text-align: left">
+      <ion-icon id="icon18" name="medkit"></ion-icon>
+    </ion-col>
+    <ion-col col-6 id="activity_18">
+      Footrub
+    </ion-col>
+    <ion-col col-4 id="loc_18" style="text-align: right">
+      Norris 
+    </ion-col>
+    <ion-col col-12 id="time_18" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
+    </ion-col>
+  </ion-row>
+  </ion-item>
+
+  <ion-item style="display:none;" id="item19">
+    <ion-row>
+    <ion-col col-2 style="text-align: left">
+      <ion-icon id="icon19" name="medkit"></ion-icon>
+    </ion-col>
+    <ion-col col-6 id="activity_19">
+      Footrub
+    </ion-col>
+    <ion-col col-4 id="loc_19" style="text-align: right">
+      Norris 
+    </ion-col>
+    <ion-col col-12 id="time_19" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
+    </ion-col>
+  </ion-row>
+  </ion-item>
+
+  <ion-item style="display:none;" id="item20">
+    <ion-row>
+    <ion-col col-2 style="text-align: left">
+      <ion-icon id="icon20" name="medkit"></ion-icon>
+    </ion-col>
+    <ion-col col-6 id="activity_20">
+      Footrub
+    </ion-col>
+    <ion-col col-4 id="loc_20" style="text-align: right">
+      Norris 
+    </ion-col>
+    <ion-col col-12 id="time_20" style="margin-left: 20%;font-style: italic">
+      6pm-7pm
+    </ion-col>
+  </ion-row>
+  </ion-item>
+
+
+
+
+
+
+
+
 </ion-list>
 </div>
 
