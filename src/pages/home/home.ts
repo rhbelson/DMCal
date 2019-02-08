@@ -336,6 +336,7 @@ setTimeout(function(){
       //Fill in calendar (for however many activities exist...)
       //STEP 1: 4th Column is first activity, User Has words.length-3 activities
       console.log("This user has "+words.length+"activities");
+      console.log("This user is on the "+words[2]+" committee");
       
       
       var a;
