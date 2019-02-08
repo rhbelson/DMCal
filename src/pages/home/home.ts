@@ -31,6 +31,8 @@ export class HomePage {
 
     //2) Check for Notifications every 10 seconds
     this.storage.set('recentNotif', '');
+    var user_committee="N/A";
+    var user_name="N/A";
 
     //3) Check Notifications
     setInterval(() => {
@@ -205,7 +207,7 @@ console.log(data.coords.latitude,data.coords.longitude);
 
   var userActivity="footrub";
   var userId=this.makeId();
-  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "userId": '+userId+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
+  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "Name": '+this.user_name+', "Committee": '+this.user_committee+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
   let header = {"Content-Type": "application/json", data: body};
 
   this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', header , {})
@@ -337,6 +339,12 @@ setTimeout(function(){
       //STEP 1: 4th Column is first activity, User Has words.length-3 activities
       console.log("This user has "+words.length+"activities");
       console.log("This user is on the "+words[2]+" committee");
+
+      //Set Name & Committee
+      // this.user_name=words[1];
+      // this.user_committee=words[2];
+      // console.log(this.user_name,this.user_committee);
+
       
       
       var a;
