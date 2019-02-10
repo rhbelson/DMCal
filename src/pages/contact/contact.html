@@ -6,24 +6,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="font-family: Lato">
   <ion-list>
-    <ion-list-header>DAE Leaders Contacts</ion-list-header>
-    <ion-item>
-      Dalia Jude (DAE Co Chair):
-      <br><ion-icon style="margin-right: 5px" name="call"></ion-icon> 650-995-6118 
+    <ion-item (click)="callDalia()">
+      Dalia Jude (DAE Co Chair)
+      <br>
+      <button ion-button> <ion-icon style="margin-right: 5px" name="call"></ion-icon> 650-995-6118 </button>
     </ion-item>
     <ion-item>
       Daniel Abia (DAE Co Chair)
-      <br><ion-icon style="margin-right: 5px" name="call"></ion-icon>954-604-1101
+      <br>
+      <button ion-button> <ion-icon style="margin-right: 5px" name="call"></ion-icon>954-604-1101</button>
     </ion-item>
     <ion-item>
       Regina Fricton (Head Girl)
-      <br><ion-icon style="margin-right: 5px" name="call"></ion-icon>612-850-2024
+      <br>
+      <button ion-button> <ion-icon style="margin-right: 5px" name="call"></ion-icon>612-850-2024 </button>
     </ion-item>
     <ion-item>
      Alec Chang (Head Boy)
-     <br><ion-icon style="margin-right: 5px" name="call"></ion-icon>847-644-5054
+     <br>
+     <button ion-button><ion-icon style="margin-right: 5px" name="call"></ion-icon>847-644-5054</button>
     </ion-item>
   </ion-list>
 </ion-content>

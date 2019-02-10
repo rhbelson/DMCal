@@ -19,6 +19,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { IBeacon } from '@ionic-native/ibeacon';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { IBeacon } from '@ionic-native/ibeacon';
     BackgroundMode,
     UniqueDeviceID,
     IBeacon,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

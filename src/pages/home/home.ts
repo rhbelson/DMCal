@@ -207,7 +207,9 @@ console.log(data.coords.latitude,data.coords.longitude);
 
   var userActivity="footrub";
   var userId=this.makeId();
-  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "Name": '+this.user_name+', "Committee": '+this.user_committee+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
+  var user_committee="N/A";
+  var user_name="N/A";
+  var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "Name": '+user_name+', "Committee": '+user_committee+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
   let header = {"Content-Type": "application/json", data: body};
 
   this.http.post('http://hinckley.cs.northwestern.edu/~rbi054/dm_post.php', header , {})
@@ -313,8 +315,10 @@ presentLoadingText() {
   txt = xmlhttp.responseText;
   console.log(txt);
   }
-  };
+    };
+  
   xmlhttp.open("GET","./dm_schedule2.csv",true);
+  // xmlhttp.open("GET","http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php",true);
   xmlhttp.send();
 
 
@@ -344,6 +348,7 @@ setTimeout(function(){
       // this.user_name=words[1];
       // this.user_committee=words[2];
       // console.log(this.user_name,this.user_committee);
+      document.getElementById("welcomeMessage").innerHTML="Carpe DM, "+words[0].toString()+"! | Your Committee: "+words[2].toString();
 
       
       

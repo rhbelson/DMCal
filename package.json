@@ -21,6 +21,7 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/background-mode": "^4.20.0",
+    "@ionic-native/call-number": "^5.0.0",
     "@ionic-native/core": "~4.15.0",
     "@ionic-native/geolocation": "^4.20.0",
     "@ionic-native/http": "^4.20.0",
@@ -31,6 +32,7 @@
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic-native/unique-device-id": "^4.20.0",
     "@ionic/storage": "^2.2.0",
+    "call-number": "1.0.1",
     "chart.js": "^2.7.3",
     "com.unarin.cordova.beacon": "~3.7.0",
     "cordova-browser": "5.0.4",
@@ -80,7 +82,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "mx.ferreyra.callnumber": {}
     },
     "platforms": [
       "browser"
