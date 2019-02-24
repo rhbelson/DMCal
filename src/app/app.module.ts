@@ -20,6 +20,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { IBeacon } from '@ionic-native/ibeacon';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
     IBeacon,
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RemoteServiceProvider,
   ]
 })
 export class AppModule {}
