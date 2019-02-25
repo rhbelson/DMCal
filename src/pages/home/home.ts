@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 // import { BackgroundMode } from '@ionic-native/background-mode';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 // import { IBeacon } from '@ionic-native/ibeacon';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 
 
@@ -21,7 +22,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 export class HomePage {
 
   
-  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
+  constructor(public platform: Platform, public navCtrl: NavController, private fcm: FCM,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
     //0) Set background mode on
     // this.backgroundMode.enable();
 
@@ -297,6 +298,24 @@ presentLoadingText() {
 
   //Fix ".edu" not showing up bug
   target_email+=".edu";
+
+  this.fcm.getToken().then(token => {
+    console.log(token);
+  });
+
+  let response = this.fcm.subscribeToTopic('marketing');
+  console.log('subscribe to topic is not blocking!');
+  console.log(response);
+
+  this.fcm.onNotification().subscribe(data => {
+    if(data.wasTapped){
+      console.log("Received in background");
+    } else {
+      console.log("Received in foreground");
+    };
+  });
+
+  // this.fcm.subscribeToTopic(target_email);
 
 
   //Edge Case
