@@ -19,7 +19,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 })
 export class HomePage {
-
+  email: string = "";
   
   constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
     //0) Set background mode on
@@ -27,7 +27,7 @@ export class HomePage {
 
     //1) Get user_id 
     // this.getUUID();
-    
+
 
     //2) Check for Notifications every 10 seconds
     this.storage.set('recentNotif', '');
@@ -291,12 +291,10 @@ presentLoadingText() {
   document.getElementById('alert_card').style.display="none";
   var target_email;
   // target_email=this.inputValue;
-  target_email = document.getElementById("user_email").getAttribute("ng-reflect-model");
+  target_email = this.email;
   target_email = target_email.toLowerCase();
   console.log("Target Email: "+target_email);
-
-  //Fix ".edu" not showing up bug
-  target_email+=".edu";
+  console.log("Target Email: "+ this.email);
 
 
   //Edge Case
@@ -307,19 +305,27 @@ presentLoadingText() {
     loading.dismiss();
     return;
   }
-
   var txt = '';
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function(){
-  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-  txt = xmlhttp.responseText;
-  console.log(txt);
-  }
-    };
   
-  xmlhttp.open("GET","./dm_schedule2.csv",true);
+  // xmlhttp.open("GET","./dm_schedule2.csv",true);
   // xmlhttp.open("GET","http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php",true);
-  xmlhttp.send();
+  // xmlhttp.send();
+
+  this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php', {}, {})
+    .then(data => {
+
+      console.log(data.status);
+      // console.log(data.data); // data received by server
+      txt=data.data;
+      console.log("DM Full Schedule: "+txt.toString());
+      // console.log(data.headers);
+
+    })
+    .catch(error => {
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+    });
 
 
 
@@ -327,7 +333,7 @@ presentLoadingText() {
 setTimeout(function(){ 
   console.log("parsing input.."); 
   var lines=txt.split('\n');
-  console.log(lines[0]);
+  console.log(lines[1]);
   console.log(lines.length);
   ///Step 1: Find Correct User Email
   var i;
