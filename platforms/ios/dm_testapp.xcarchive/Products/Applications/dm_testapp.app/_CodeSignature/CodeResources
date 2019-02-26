@@ -98,11 +98,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		cQQt3fH3GXLW+6FyfMZWAKJZH6o=
+		9QantUAi7YkOLfM5+yGLa1EPqjg=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		7G4CDvWO8TmSKWNWhfi3uehueKU=
+		4idS3UM2dRTcaylETXoSlHdjkPw=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -110,15 +110,15 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		LCpUpqR7k2IOahtNY98H5fuiOdg=
+		raQciAgryhkte0rOYnlBg7k9m0U=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
-		v17JbAVCRG4DLJN9Hrxby3B69sI=
+		CHJTa/F32UroukQpWFxwMKNwzOA=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		q1pm04OICHGp8Lp61P4IZ5Vvkwo=
+		n5cE69VILwLwBPsafj5W6hg+Ln4=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -186,7 +186,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		JkH2+nCdwTa0pOjK1dwITNeUhYI=
+		q4XuMM6Dm9wE7YZHAYjzUbX1Kb8=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -198,11 +198,11 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		qGpH048Zc6duNVAxlcjvYmht2JY=
+		8xCJSQielkMqlokCtV8hS3FRuWA=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		KW5u9aVmjtg14grF01S1a/IOKCk=
+		6kp6Bn/QqDJT6QA+j8qqJEkarTg=
 		</data>
 		<key>www/assets/fonts/ionicons.eot</key>
 		<data>
@@ -318,7 +318,7 @@
 		</data>
 		<key>www/build/main.js</key>
 		<data>
-		PXLzRBbqTvBAZ2DrOjoWmWObaGI=
+		Tj8AaWvWvMC8b+HMQeKFhOC/sVo=
 		</data>
 		<key>www/build/main.js.map</key>
 		<data>
@@ -338,7 +338,7 @@
 		</data>
 		<key>www/build/vendor.js.map</key>
 		<data>
-		BC7MZh3bUe+X6/QNXmrKSASIlX0=
+		v6OrUmfyfd02jvsHmUrhP27mDT8=
 		</data>
 		<key>www/cordova-js-src/exec.js</key>
 		<data>
@@ -888,22 +888,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cQQt3fH3GXLW+6FyfMZWAKJZH6o=
+			9QantUAi7YkOLfM5+yGLa1EPqjg=
 			</data>
 			<key>hash2</key>
 			<data>
-			nLs/nKWgw5xvbKR83LL14MmgDZFGNx9xpaWGBEvrqoo=
+			gT92NCT70PwKcpRbZbWrrvcXDDgTCYlc5IGDupN76l8=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7G4CDvWO8TmSKWNWhfi3uehueKU=
+			4idS3UM2dRTcaylETXoSlHdjkPw=
 			</data>
 			<key>hash2</key>
 			<data>
-			8/r+8E1NweLYbqcLeDgX8z6ajlvs+B3YoscTWUxEysI=
+			wMJKPnkG1dEErCG2fkqsEqnU1+tTkitLeNA1/osA9qA=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -921,22 +921,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LCpUpqR7k2IOahtNY98H5fuiOdg=
+			raQciAgryhkte0rOYnlBg7k9m0U=
 			</data>
 			<key>hash2</key>
 			<data>
-			BFR7yDCcpPZcMf95ZniVghbhopqPjTJAAPjbiOEfQ7o=
+			Q12FfVeXbXOUXmS8aGgQvNZhXXU3BClvRpPLQrSyHrY=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			v17JbAVCRG4DLJN9Hrxby3B69sI=
+			CHJTa/F32UroukQpWFxwMKNwzOA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Fioxc7/yA4GrYkuWDsPmjfq/q1kFq9cgNdjUN/yajcY=
+			sY25VrXNRoCiZuucj8zl1CBXoUM/bXzFGfQWu9/nhug=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -1119,11 +1119,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JkH2+nCdwTa0pOjK1dwITNeUhYI=
+			q4XuMM6Dm9wE7YZHAYjzUbX1Kb8=
 			</data>
 			<key>hash2</key>
 			<data>
-			8hkrtZyP4oyKvUaemb2R2DxWYtzac3vPfNNWecSVuRY=
+			fiXzJ6dN3IdsJTyEzgDUoYlZcszID6BoaxkngnI1tTk=
 			</data>
 		</dict>
 		<key>appbeep.wav</key>
@@ -1141,22 +1141,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qGpH048Zc6duNVAxlcjvYmht2JY=
+			8xCJSQielkMqlokCtV8hS3FRuWA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Q6eSbDP5S18DYZ95IY3vFDQc5GioynHSoGYWflpUzYw=
+			vK6QFvrElhKJT8wlfse6FaMGyun5LFCF9pjt7AsPdqc=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KW5u9aVmjtg14grF01S1a/IOKCk=
+			6kp6Bn/QqDJT6QA+j8qqJEkarTg=
 			</data>
 			<key>hash2</key>
 			<data>
-			3+2dTsw9OC0rLvtueTk/3BYcFYeC4V3kxqRUMB7NBqw=
+			laOPtNF+6JQlCErQ0uQf5S+nnix2Pmwe2DaVBbYDzS4=
 			</data>
 		</dict>
 		<key>www/assets/fonts/ionicons.eot</key>
@@ -1471,11 +1471,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PXLzRBbqTvBAZ2DrOjoWmWObaGI=
+			Tj8AaWvWvMC8b+HMQeKFhOC/sVo=
 			</data>
 			<key>hash2</key>
 			<data>
-			lceoUm3oivz346lAikhOKsMhBF91wt8eoTCzGoqx+L4=
+			0Auqv872PLlKpCojdWo+SvQm4SSm9bGo0nhjSowYzng=
 			</data>
 		</dict>
 		<key>www/build/main.js.map</key>
@@ -1526,11 +1526,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BC7MZh3bUe+X6/QNXmrKSASIlX0=
+			v6OrUmfyfd02jvsHmUrhP27mDT8=
 			</data>
 			<key>hash2</key>
 			<data>
-			oiA5XUNZXgnkKI41AZk6A4G91yvojKZDpzYqsbgmVb0=
+			ytxPxuaVxpcspyTqt2s2KdgoXHPjow0JctDQ6JED1X4=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/exec.js</key>
@@ -2328,7 +2328,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -2359,24 +2359,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -2412,13 +2400,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

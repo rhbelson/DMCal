@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>54297154034-m1a6uv0jheki6d136tiurle0r98q4v2n.apps.googleusercontent.com</string>
+	<string>692365073104-683pr12q90c08un98v55464a1f9ah9eo.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.54297154034-m1a6uv0jheki6d136tiurle0r98q4v2n</string>
+	<string>com.googleusercontent.apps.692365073104-683pr12q90c08un98v55464a1f9ah9eo</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCEHnzZCHWublIFD6JhlxvPnZWmrEZApMM</string>
+	<string>AIzaSyBjhe3HH2sHTTtzB6iZIMaZd8VLGapfDKQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>54297154034</string>
+	<string>692365073104</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>matsuda-dm-testapp</string>
+	<string>com.nudm.staff</string>
 	<key>PROJECT_ID</key>
-	<string>nudm-staff-app-2</string>
+	<string>nudm-staff-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nudm-staff-app-2.appspot.com</string>
+	<string>nudm-staff-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:54297154034:ios:589fef7147482460</string>
+	<string>1:692365073104:ios:d5e0aa9bcaba5d77</string>
 	<key>DATABASE_URL</key>
-	<string>https://nudm-staff-app-2.firebaseio.com</string>
+	<string>https://nudm-staff-app.firebaseio.com</string>
 </dict>
 </plist>
