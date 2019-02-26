@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 // import { BackgroundMode } from '@ionic-native/background-mode';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 // import { IBeacon } from '@ionic-native/ibeacon';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 
 
@@ -21,7 +22,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 export class HomePage {
   email: string = "";
   
-  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
+  constructor(public platform: Platform, private fcm: FCM, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
     //0) Set background mode on
     // this.backgroundMode.enable();
 
@@ -207,8 +208,12 @@ console.log(data.coords.latitude,data.coords.longitude);
 
   var userActivity="footrub";
   var userId=this.makeId();
-  var user_committee="N/A";
   var user_name="N/A";
+  var user_committee="N/A";
+  // this.storage.get('userName').then((val) => {
+  //   user_name=val;
+  // });
+
   var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "Name": '+user_name+', "Committee": '+user_committee+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
   let header = {"Content-Type": "application/json", data: body};
 
@@ -294,8 +299,14 @@ presentLoadingText() {
   target_email = this.email;
   target_email = target_email.toLowerCase();
   console.log("Target Email: "+target_email);
-  console.log("Target Email: "+ this.email);
+  console.log("Target Email: "+this.email);
 
+  this.fcm.getToken().then(token => {
+    console.log(token);
+  });
+
+  let response = this.fcm.subscribeToTopic('all');
+  console.log(response);
 
   //Edge Case
   if (target_email=="") {
@@ -342,6 +353,10 @@ setTimeout(function(){
     var words=lines[i].split(',');
     console.log("Checking string: "+words[1]);
     if (words[1]==target_email) {
+      //Code to get user Email
+      // this.storage.set('userName', words[1]);
+      //End of code to get user email
+
       console.log("found email :"+ words[1])
       email_found=true;
       // this.updateUser(words[1].toString());
@@ -392,8 +407,6 @@ setTimeout(function(){
         if (activity_info[1].includes("2019-03-09T")) {
           activity_info[1]=activity_info[1].replace("2019-03-09T","Saturday ");
         }
-
-
 
         document.getElementById(time_iter).innerHTML=activity_info[0]+" – "+activity_info[1];
         document.getElementById(loc_iter).innerHTML=activity_info[3];

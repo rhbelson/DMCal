@@ -21,6 +21,17 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { IBeacon } from '@ionic-native/ibeacon';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
+import { FCM } from '@ionic-native/fcm/ngx';
+
+const config = {
+  apiKey: "AIzaSyDPDc5FL4VuavAc8FP-X4izGgE_kNpVYcg",
+  authDomain: "nudm-staff-app-2.firebaseapp.com",
+  databaseURL: "https://nudm-staff-app-2.firebaseio.com",
+  projectId: "nudm-staff-app-2",
+  storageBucket: "nudm-staff-app-2.appspot.com",
+  messagingSenderId: "54297154034"
+};
+
 
 @NgModule({
   declarations: [
@@ -55,8 +66,8 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
     UniqueDeviceID,
     IBeacon,
     CallNumber,
+    FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RemoteServiceProvider,
     RemoteServiceProvider,
   ]
 })
