@@ -57,6 +57,7 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RemoteServiceProvider,
+    RemoteServiceProvider,
   ]
 })
 export class AppModule {}
