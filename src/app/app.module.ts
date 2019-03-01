@@ -21,7 +21,9 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 import { IBeacon } from '@ionic-native/ibeacon';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
+import {FCM} from "@ionic-native/fcm";
 
+// @ts-ignore
 @NgModule({
   declarations: [
     MyApp,
@@ -55,6 +57,7 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
     UniqueDeviceID,
     IBeacon,
     CallNumber,
+    FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RemoteServiceProvider,
     RemoteServiceProvider,

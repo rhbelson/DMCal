@@ -14,7 +14,7 @@
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
     "@angular/compiler": "5.2.11",
-    "@angular/compiler-cli": "5.2.11",
+    "@angular/compiler-cli": "^7.2.7",
     "@angular/core": "5.2.11",
     "@angular/forms": "5.2.11",
     "@angular/http": "5.2.11",
@@ -23,7 +23,7 @@
     "@ionic-native/background-mode": "^4.20.0",
     "@ionic-native/call-number": "^5.2.0",
     "@ionic-native/core": "~4.15.0",
-    "@ionic-native/fcm": "^5.2.0",
+    "@ionic-native/fcm": "^4.19.0",
     "@ionic-native/geolocation": "^4.20.0",
     "@ionic-native/http": "^4.20.0",
     "@ionic-native/ibeacon": "^4.20.0",
@@ -64,7 +64,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.0",
+    "@ionic/app-scripts": "^3.2.3",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",

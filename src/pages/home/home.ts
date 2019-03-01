@@ -21,7 +21,9 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 export class HomePage {
   email: string = "";
   
-  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
+  constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController,
+              private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP,
+              private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
     //0) Set background mode on
     // this.backgroundMode.enable();
 
@@ -319,6 +321,12 @@ presentLoadingText() {
       txt=data.data;
       console.log("DM Full Schedule: "+txt.toString());
       // console.log(data.headers);
+
+      this.storage.set('email', target_email).then(() => {});
+      this.storage.get('fcmToken').then(token => {
+        this.http.post('http://api.nudm.org/app_token.php', {token: token, email: target_email}, {})
+          .then(data => {});
+      });
 
     })
     .catch(error => {
