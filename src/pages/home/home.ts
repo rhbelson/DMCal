@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 // import { IBeacon } from '@ionic-native/ibeacon';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 
 
@@ -22,14 +23,14 @@ import { FCM } from '@ionic-native/fcm/ngx';
 export class HomePage {
   email: string = "";
   
-  constructor(public platform: Platform, private fcm: FCM, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
+  constructor(public platform: Platform, private keyboard: Keyboard, private fcm: FCM, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
     //0) Set background mode on
     // this.backgroundMode.enable();
 
     //1) Get user_id 
     // this.getUUID();
 
-
+    this.keyboard.disableScroll(true);
     //2) Check for Notifications every 10 seconds
     this.storage.set('recentNotif', '');
     var user_committee="N/A";
@@ -301,12 +302,12 @@ presentLoadingText() {
   console.log("Target Email: "+target_email);
   console.log("Target Email: "+this.email);
 
-  this.fcm.getToken().then(token => {
-    console.log(token);
-  });
-
-  let response = this.fcm.subscribeToTopic('all');
-  console.log(response);
+  // this.fcm.getToken().then(token => {
+  //   console.log(token);
+  // });
+  //
+  // let response = this.fcm.subscribeToTopic('all');
+  // console.log(response);
 
   //Edge Case
   if (target_email=="") {

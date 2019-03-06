@@ -25743,6 +25743,8 @@ page-about .ios page-home ion-card-header, page-about .md page-home ion-card-hea
 page-home .image {
   -webkit-transform-origin: 50% 0;
   transform-origin: 50% 0;
-  -webkit-animation: swinging 5.5s ease-in-out forwards infinite;
-  animation: swinging 5.5s ease-in-out forwards infinite;
+}
+
+page-home .input {
+  max-width: 90%;
 }
