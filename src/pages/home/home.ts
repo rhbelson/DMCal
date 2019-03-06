@@ -106,39 +106,8 @@ learnMore() {
   this.getLocation();
 }
 
-
-
-presentLoadingText() {
-  // console.log(this.inputValue)
-  document.getElementById("cube").display="block";
-  
-     // Data Processing
-  document.getElementById('alert_card').style.display="none";
-  var target_email;
-  // target_email=this.inputValue;
-  target_email = this.email;
-  target_email = target_email.toLowerCase();
-  console.log("Target Email: "+target_email);
-  console.log("Target Email: "+ this.email);
-
-
-  //Edge Case
-  if (target_email=="") {
-    console.log("null string");
-    document.getElementById('alert_card').style.display="block";
-    document.getElementById("fullCalendar").style.display="none";
-    return;
-  }
-  var txt = '';
-
-
-  this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php', {}, {})
-    .then(data => {
-
-      console.log(data.status);
-      // console.log(data.data); // data received by server
-      txt=data.data;
-      console.log("DM Full Schedule: "+txt.toString());
+parse(txt,target_email) {
+  console.log("DM Full Schedule: "+txt.toString());
       // console.log(data.headers);
         console.log("parsing input.."); 
   var lines=txt.split('\n');
@@ -283,13 +252,65 @@ presentLoadingText() {
         document.getElementById("fullCalendar").style.display="block";
         email_found=false;
       }
-      document.getElementById("cube").display="none";
+      document.getElementById("cube").style.display="none";
+}
 
+
+
+
+
+presentLoadingText() {
+  // console.log(this.inputValue)
+  document.getElementById("cube").style.display="block";
+  
+     // Data Processing
+  document.getElementById('alert_card').style.display="none";
+  var target_email;
+  // target_email=this.inputValue;
+  target_email = this.email;
+  target_email = target_email.toLowerCase();
+  console.log("Target Email: "+target_email);
+  console.log("Target Email: "+ this.email);
+
+
+  //Edge Case
+  if (target_email=="") {
+    console.log("null string");
+    document.getElementById('alert_card').style.display="block";
+    document.getElementById("fullCalendar").style.display="none";
+    return;
+  }
+  var txt = '';
+
+
+  this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php', {}, {})
+    .then(data => {
+
+      console.log(data.status);
+      // console.log(data.data); // data received by server
+      txt=data.data;
+      this.parse(txt,target_email);
     })
     .catch(error => {
       console.log(error.status);
       console.log(error.error); // error message as string
       console.log(error.headers);
+
+      console.log("Hinckley didn't work..trying NUDM");
+      this.http.get('http://api.nudm.org/get_dmcal.php', {}, {})
+    .then(data => {
+
+      console.log(data.status);
+      // console.log(data.data); // data received by server
+      txt=data.data;
+      this.parse(txt,target_email);
+    })
+    .catch(error => {
+      console.log("NUDM ruined");
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+                                });
     });
 
 }
