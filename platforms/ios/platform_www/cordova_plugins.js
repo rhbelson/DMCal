@@ -295,6 +295,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+    "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+    "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+    "clobbers": [
+      "FCMPlugin"
+    ]
+  },
+  {
     "id": "cordova-plugin-geolocation.Coordinates",
     "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
     "pluginId": "cordova-plugin-geolocation",
@@ -415,14 +423,6 @@ module.exports = [
     "clobbers": [
       "PushNotification"
     ]
-  },
-  {
-    "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-    "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-    "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-    "clobbers": [
-      "FCMPlugin"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -435,6 +435,7 @@ module.exports.metadata =
   "cordova-plugin-advanced-http": "2.0.5",
   "cordova-plugin-background-mode": "0.7.2",
   "cordova-plugin-badge": "0.8.8",
+  "cordova-plugin-fcm-with-dependecy-updated": "2.4.0",
   "cordova-plugin-geolocation": "4.0.1",
   "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-plugin-ionic-webview": "2.4.0",
@@ -444,8 +445,7 @@ module.exports.metadata =
   "cordova-plugin-uniquedeviceid": "1.3.2",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.6.0",
-  "phonegap-plugin-push": "2.2.3",
-  "cordova-plugin-fcm-with-dependecy-updated": "2.4.0"
+  "phonegap-plugin-push": "2.2.3"
 };
 // BOTTOM OF METADATA
 });

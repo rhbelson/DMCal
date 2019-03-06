@@ -8,60 +8,60 @@
   },
   "installed_plugins": {
     "call-number": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     },
     "com.unarin.cordova.beacon": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     },
     "cordova-plugin-advanced-http": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     },
     "cordova-plugin-background-mode": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-local-notification": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-uniquedeviceid": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
-    },
-    "phonegap-plugin-push": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     },
     "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.nudm.staff"
+    },
+    "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.nudm.staff"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     },
     "cordova-plugin-badge": {
-      "PACKAGE_NAME": "matsuda-dm-testapp"
+      "PACKAGE_NAME": "com.nudm.staff"
     }
   }
 }

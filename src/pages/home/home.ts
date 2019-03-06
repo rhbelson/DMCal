@@ -60,6 +60,14 @@ export class HomePage {
   }
 
 
+  ionViewWillLoad() {
+    this.storage.get('email').then(email => {
+      if(email) {
+        this.email = email;
+        this.presentLoadingText()
+      }
+    });
+  }
 
 //**************************BEGINNING OF BEACON CODE************************************************//
 
