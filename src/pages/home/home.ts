@@ -22,160 +22,14 @@ export class HomePage {
   email: string = "";
   
   constructor(public platform: Platform, public navCtrl: NavController,  public loadingCtrl: LoadingController, private localNotifications: LocalNotifications, private geolocation: Geolocation, private http: HTTP, private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
-    //0) Set background mode on
-    // this.backgroundMode.enable();
-
-    //1) Get user_id 
-    // this.getUUID();
-
-
-    //2) Check for Notifications every 10 seconds
-    this.storage.set('recentNotif', '');
+    
     var user_committee="N/A";
     var user_name="N/A";
-
-    //3) Check Notifications
-    setInterval(() => {
-    this.checkNotifications();
-      }, 30000);
-
-    //4) Get Users Location every 15 minutes
-    // setInterval(() => {
-    // this.getLocation();
-    //   }, 900000);
-
-    // setTimeout(() => {
-    // this.trackBeacons();
-    // }, 3000);
 }
 
-
-  getUUID() {
-    console.log("getUUID called");
-    this.uniqueDeviceID.get()
-    .then((uuid: any) => console.log(uuid))
-    .catch((error: any) => console.log(error));
-  }
-
-
-
-//**************************BEGINNING OF BEACON CODE************************************************//
-
-
-  // trackBeacons() {
-  //  if (this.platform.is('cordova')) {
-  //   // Request permission to use location on iOS
-  //   this.ibeacon.requestAlwaysAuthorization();
-  //   // create a new delegate and register it with the native layer
-  
-  //     // create a new delegate and register it with the native layer
-  //     let delegate = this.ibeacon.Delegate();
-
-  //     delegate.didStartMonitoringForRegion()
-  //       .subscribe(
-  //         data => console.log('didStartMonitoringForRegion: ', data),
-  //         error => console.error()
-  //       );
-      
-  //     delegate.didEnterRegion()
-  //       .subscribe(
-  //         data => {
-  //           console.log("Entered Region", data);
-  
-  //         }
-  //       );
-
-  //     delegate.didExitRegion()
-  //       .subscribe(
-  //         data => {
-  //           console.log("Exited Region",data);
-            
-  //         }
-  //       );
-      
-  //     let beaconRegion = this.ibeacon.BeaconRegion('norrisEntrance','2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6');
-  //     this.ibeacon.startMonitoringForRegion(beaconRegion)
-  //       .then(
-  //         () => console.log('Started Monitoring', beaconRegion),
-  //         error => console.error('Failed to begin monitoring: ', error)
-  //       );
-
-  //     this.ibeacon.enableDebugNotifications();
-  //   }
-  //   else {
-  //     console.log("not cordova")
-  //   }
-  // }
-
-
-// this.ibeacon.startMonitoringForRegion(beaconRegion)
-//   .then(
-//     () => console.log('Native layer received the request to monitoring'),
-//     error => console.error('Native layer failed to begin monitoring: ', error)
-//   );
-
-//**************************END OF BEACON CODE************************************************//
-
-//Checks for incoming notifications
-checkNotifications() {
-  var response='';
-  var recentNotif;
-  //Get recent notification from storage
-   this.storage.get('recentNotif').then((val) => {
-    recentNotif=val;
-  });
-
-  
-  this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/dm_notification_get.php', {}, {})
-    .then(data => {
-
-      console.log(data.status);
-      // console.log(data.data); // data received by server
-      response=data.data;
-      console.log("Checking notifications received: "+response.toString());
-      // console.log(data.headers);
-
-    })
-    .catch(error => {
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-    });
-
-
-    //Wait Until Notification Comes in
-    setTimeout(() => {
-    //Check if old notification
-    if (recentNotif==response.toString()) {
-      //do nothing
-      console.log("Old notification!");
-    }
-    if (recentNotif!=response.toString()) {
-      console.log("New notification!");
-      var notification_body=response.split('\n');
-      
-      this.localNotifications.schedule({
-          id: 1,
-          text: "NUDM 2019: "+notification_body[0].toString(),
-          trigger: {at: new Date(new Date().getTime() + 10)},
-      });
-      this.storage.set('recentNotif', response.toString());
-    }
-  }, 3000);
-
-}
 
 updateUser(name) {
   this.storage.set("user",name);
-}
-
-makeId() {
-  var uuid = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < 5; i++)
-      uuid += possible.charAt(Math.floor(Math.random() * possible.length));
-  return uuid;
 }
 
 
@@ -206,7 +60,6 @@ console.log(data.coords.latitude,data.coords.longitude);
   }
 
   var userActivity="footrub";
-  var userId=this.makeId();
   var user_committee="N/A";
   var user_name="N/A";
   var body = '{"lat": '+ user_lat.toString()+', "long": '+user_long.toString()+', "Name": '+user_name+', "Committee": '+user_committee+', "inNorris": '+inNorris.toString()+', "timestamp": '+user_time.toString()+', "userActivity": '+ userActivity.toString()+'}';
@@ -255,37 +108,9 @@ learnMore() {
 
 
 
-addNotification() {
-  let timenow=new Date();
-  let time=new Date(2019, 0, 20, 15, 52);
-  console.log("Triggering Notification at "+time);
-  console.log("Current Time: "+timenow);
-  // Schedule a single notification
-  this.localNotifications.clearAll();
-  this.localNotifications.schedule({
-    id: 3,
-    title: 'DMCal',
-    text: 'Reminder! Do Your Job!',
-    trigger: { at: new Date(2020, 0, 20, 15, 52) },
-  });
-
-}
-
-
 presentLoadingText() {
   // console.log(this.inputValue)
-  let loading = this.loadingCtrl.create({
-    spinner: 'hide',
-    content: 'Loading Please Wait...'
-  });
-
-  loading.present();
-
-
-  setTimeout(() => {
-  //Finish Loader
-    loading.dismiss();
-  }, 5000);
+  document.getElementById("cube").display="block";
   
      // Data Processing
   document.getElementById('alert_card').style.display="none";
@@ -302,14 +127,10 @@ presentLoadingText() {
     console.log("null string");
     document.getElementById('alert_card').style.display="block";
     document.getElementById("fullCalendar").style.display="none";
-    loading.dismiss();
     return;
   }
   var txt = '';
-  
-  // xmlhttp.open("GET","./dm_schedule2.csv",true);
-  // xmlhttp.open("GET","http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php",true);
-  // xmlhttp.send();
+
 
   this.http.get('http://hinckley.cs.northwestern.edu/~rbi054/get_dmcal.php', {}, {})
     .then(data => {
@@ -319,19 +140,7 @@ presentLoadingText() {
       txt=data.data;
       console.log("DM Full Schedule: "+txt.toString());
       // console.log(data.headers);
-
-    })
-    .catch(error => {
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-    });
-
-
-
-///////BEGINNING OF CODE THAT DYNAMICALLY RENDERS DM MEMBER SCHEDULE////////////////////
-setTimeout(function(){ 
-  console.log("parsing input.."); 
+        console.log("parsing input.."); 
   var lines=txt.split('\n');
   console.log(lines[1]);
   console.log(lines.length);
@@ -393,22 +202,8 @@ setTimeout(function(){
           activity_info[1]=activity_info[1].replace("2019-03-09T","Saturday ");
         }
 
-
-
         document.getElementById(time_iter).innerHTML=activity_info[0]+" – "+activity_info[1];
         document.getElementById(loc_iter).innerHTML=activity_info[3];
-
-
-        //Populate Storage
-        // console.log("Begin Populating Storage");
-        // console.log(act_iter.toString());
-        // console.log(activity_info[2].toString());
-        // this.storage.set(act_iter.toString(), activity_info[2].toString());
-        // console.log("STORAGE 1 WORKED");
-        // this.storage.set(time_iter,activity_info[0]+" – "+activity_info[1]);
-
-        // this.storage.set(loc_iter,activity_info[3]);
-
 
         //Update Icons with for loop by activity name
         var icon_iter="icon".concat((a+1).toString());
@@ -428,25 +223,74 @@ setTimeout(function(){
             document.getElementById(icon_iter).className="icon icon-md ion-md-eye";
          }
 
-         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="bathroom runner") {
-            document.getElementById(icon_iter).className="icon icon-md ion-md-water";
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="pushups") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-hand";
          }
-      }
-    }
-  }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="break") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-body";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="off") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-body";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="puppies") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-paw";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="dance") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-walk";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="tent morale") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-trending-up";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="bathroom marquee") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-battery-charging";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="on call") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-phone-portrait";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="30k table") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-cash";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="phonathon") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-call";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="30k perk area") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-ribbon";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="run-in") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-walk";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase()=="counting") {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-calculator";
+         }
+         else if (document.getElementById(act_iter).innerHTML.toLowerCase().includes("begin")) {
+            document.getElementById(icon_iter).className="icon icon-md ion-md-play";
+         }
+         else {
+          document.getElementById(icon_iter).className="icon icon-md ion-md-checkbox";
+         }
 
-  if (email_found==false) {
-    document.getElementById('alert_card').style.display="block";
-    document.getElementById("fullCalendar").style.display="none";
-  }
-  else { 
-    //Lastly, display calendar
-    document.getElementById('alert_card').style.display="none";
-    document.getElementById("fullCalendar").style.display="block";
-    email_found=false;
-  }
-   }, 3000);
-///////BEGINNING OF CODE THAT DYNAMICALLY RENDERS DM MEMBER SCHEDULE////////////////////
+          }
+        }
+      }
+
+      if (email_found==false) {
+        document.getElementById('alert_card').style.display="block";
+        document.getElementById("fullCalendar").style.display="none";
+      }
+      else { 
+        //Lastly, display calendar
+        document.getElementById('alert_card').style.display="none";
+        document.getElementById("fullCalendar").style.display="block";
+        email_found=false;
+      }
+      document.getElementById("cube").display="none";
+
+    })
+    .catch(error => {
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+    });
 
 }
 
